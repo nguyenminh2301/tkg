@@ -25,6 +25,7 @@
         <a href="#roadmap">Lộ trình</a>
         <a href="#exercises">Bài tập</a>
         <a href="#diary">Nhật ký</a>
+        <a href="#knowledge">Kiến thức</a>
         <a href="#safety">An toàn</a>
         <a href="#faq">Hỏi đáp</a>
       </nav>
@@ -35,7 +36,7 @@
     <section id="home" class="hero section">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">Phiên bản GitHub Pages miễn phí · Mức 2</p>
+          <p class="eyebrow">Sổ tay phục hồi chức năng</p>
           <h1>Hướng dẫn người bệnh tập phục hồi chức năng tại nhà, dễ hiểu và có theo dõi hằng ngày.</h1>
           <p class="lead">Website này hỗ trợ người bệnh sau thay khớp gối đọc hướng dẫn, xem lộ trình theo tuần, chọn bài tập phù hợp và ghi nhật ký tập luyện. Dữ liệu nhật ký chỉ lưu trên thiết bị của người bệnh, không gửi lên máy chủ.</p>
           <div class="cta-row">
@@ -185,7 +186,7 @@
       <div class="container">
         <p class="eyebrow">Nhật ký tập luyện mức 2</p>
         <h2>Người bệnh ghi lại đau, sưng, thời gian đi bộ và bài đã tập</h2>
-        <div class="privacy-note">Dữ liệu này lưu bằng <strong>localStorage</strong> trên trình duyệt hiện tại. Không dùng để thu thập dữ liệu nghiên cứu định danh. Nếu cần nghiên cứu, phải có hệ thống bảo mật và phê duyệt đạo đức riêng.</div>
+        <div class="privacy-note">Nhật ký được lưu trữ trực tiếp trên trình duyệt của bạn và không gửi về máy chủ. Bạn hoàn toàn chủ động trong việc lưu, xuất hoặc xóa dữ liệu.</div>
         <form id="diary-form" class="diary-form">
           <div class="form-grid">
             <label>Ngày ghi
@@ -266,31 +267,86 @@
       </div>
     </section>
 
-    <section id="downloads" class="section soft-bg">
+    <section id="knowledge" class="section soft-bg">
       <div class="container">
-        <p class="eyebrow">Tài liệu triển khai</p>
-        <h2>Các phần cần bổ sung trước khi phát chính thức</h2>
-        <div class="download-grid">
-          <article><h3>Video/hình tự quay</h3><p>Thay các khung minh họa bằng ảnh hoặc video do nhóm PHCN quay, được người bệnh/nhân viên đồng ý sử dụng.</p></article>
-          <article><h3>Duyệt chuyên môn</h3><p>Bác sĩ chấn thương chỉnh hình và KTV PHCN duyệt từng bài tập, số lần, chống chỉ định và dấu hiệu nguy hiểm.</p></article>
-          <article><h3>QR code</h3><p>Tạo QR cho trang chủ, thư viện bài tập và nhật ký; in vào sổ tay giấy và phiếu xuất viện.</p></article>
+        <p class="eyebrow">Kiến thức &amp; Video</p>
+        <h2>Bài viết và video hỗ trợ người bệnh</h2>
+        <p class="lead">Tổng hợp kiến thức chuyên môn và video hướng dẫn thực hành, giúp người bệnh hiểu rõ và tập đúng cách tại nhà.</p>
+        <div class="knowledge-grid">
+          <article class="knowledge-card">
+            <div class="video-frame" aria-hidden="true">▶ Video</div>
+            <div class="knowledge-body">
+              <span class="tag">Video hướng dẫn</span>
+              <h3>Tập phục hồi chức năng tuần đầu sau mổ</h3>
+              <p>Kỹ thuật viên hướng dẫn chi tiết các bài tập an toàn trong 0–2 tuần đầu.</p>
+              <a class="card-link" href="#">Xem video</a>
+            </div>
+          </article>
+          <article class="knowledge-card">
+            <div class="video-frame" aria-hidden="true">▶ Video</div>
+            <div class="knowledge-body">
+              <span class="tag">Video hướng dẫn</span>
+              <h3>Kỹ thuật đi lại và dùng dụng cụ hỗ trợ</h3>
+              <p>Hướng dẫn đi bộ đúng dáng, sử dụng khung tập đi và nạng an toàn.</p>
+              <a class="card-link" href="#">Xem video</a>
+            </div>
+          </article>
+          <article class="knowledge-card">
+            <div class="article-thumb" aria-hidden="true">📄 Bài viết</div>
+            <div class="knowledge-body">
+              <span class="tag">Bài viết</span>
+              <h3>Dấu hiệu bình thường và bất thường sau mổ</h3>
+              <p>Phân biệt sưng, đau sinh lý với các dấu hiệu cần báo bác sĩ ngay.</p>
+              <a class="card-link" href="#">Đọc bài viết</a>
+            </div>
+          </article>
+          <article class="knowledge-card">
+            <div class="article-thumb" aria-hidden="true">📄 Bài viết</div>
+            <div class="knowledge-body">
+              <span class="tag">Bài viết</span>
+              <h3>Chuẩn bị nhà cửa trước ngày phẫu thuật</h3>
+              <p>Sắp xếp không gian, dụng cụ và an toàn té ngã tại gia đình.</p>
+              <a class="card-link" href="#">Đọc bài viết</a>
+            </div>
+          </article>
+          <article class="knowledge-card">
+            <div class="video-frame" aria-hidden="true">▶ Video</div>
+            <div class="knowledge-body">
+              <span class="tag">Video hướng dẫn</span>
+              <h3>Bài tập tăng tầm vận động gối</h3>
+              <p>Các bài duỗi, gập gối và thăng bằng cho giai đoạn 2–12 tuần.</p>
+              <a class="card-link" href="#">Xem video</a>
+            </div>
+          </article>
+          <article class="knowledge-card">
+            <div class="article-thumb" aria-hidden="true">📄 Bài viết</div>
+            <div class="knowledge-body">
+              <span class="tag">Bài viết</span>
+              <h3>Dinh dưỡng và thuốc sau thay khớp gối</h3>
+              <p>Lưu ý ăn uống, thuốc và theo dõi vết mổ tại nhà.</p>
+              <a class="card-link" href="#">Đọc bài viết</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>Sổ tay PHCN sau thay khớp gối</strong>
-        <p>Bản mẫu mức 2 dùng GitHub Pages miễn phí. Cần duyệt chuyên môn trước khi triển khai cho người bệnh.</p>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>Sổ tay PHCN sau thay khớp gối</strong>
+          <p>Tài liệu hỗ trợ người bệnh tập phục hồi chức năng tại nhà. Nội dung mang tính giáo dục sức khỏe và không thay thế chỉ định của bác sĩ hoặc kỹ thuật viên phục hồi chức năng.</p>
+        </div>
+        <div>
+          <strong>Liên hệ</strong>
+          <p>Khoa Chấn thương chỉnh hình — [Tên bệnh viện]. Hotline: [Số điện thoại]. Trong trường hợp cấp cứu, gọi ngay số điện thoại khẩn cấp địa phương.</p>
+        </div>
       </div>
-      <div>
-        <strong>Nguồn cấu trúc tham khảo</strong>
-        <p>NHS recovery structure · AAOS exercise template · Arthritis UK plain-language exercise page. Không sao chép nội dung/hình ảnh.</p>
+      <div class="container footer-bottom">
+        <p>© <span id="year"></span> Sổ tay PHCN sau thay khớp gối. Mọi quyền được bảo lưu.</p>
       </div>
-    </div>
-  </footer>
+    </footer>
 
   <script src="assets/app.js"></script>
 </body>

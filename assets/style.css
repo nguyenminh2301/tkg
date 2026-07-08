@@ -107,6 +107,18 @@ details { padding: 18px 20px; margin: 12px 0; box-shadow: none; }
 summary { font-weight: 850; cursor: pointer; }
 .download-grid { grid-template-columns: repeat(3, 1fr); margin-top: 22px; }
 .download-grid article { padding: 22px; box-shadow: none; }
+.knowledge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+.knowledge-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
+.knowledge-card .video-frame, .knowledge-card .article-thumb { aspect-ratio: 16/9; display: grid; place-items: center; font-weight: 900; color: var(--brand-dark); font-size: 18px; }
+.knowledge-card .video-frame { background: linear-gradient(135deg, #0f766e, #0b4f4a); color: #fff; }
+.knowledge-card .article-thumb { background: linear-gradient(135deg, #dff3f0, #fff4d6); }
+.knowledge-body { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.knowledge-body .tag { align-self: flex-start; }
+.knowledge-body p { margin: 0; color: var(--muted); }
+.card-link { margin-top: auto; font-weight: 800; color: var(--brand-dark); text-decoration: none; }
+.card-link:hover { text-decoration: underline; }
+.footer-bottom { border-top: 1px solid rgba(223,243,240,.18); margin-top: 24px; padding-top: 18px; }
+.footer-bottom p { color: #c6dbd8; font-size: 14px; margin: 0; }
 .site-footer { background: #102a2a; color: #dff3f0; padding: 34px 0; }
 .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .footer-grid p { color: #c6dbd8; }
@@ -115,7 +127,7 @@ summary { font-weight: 850; cursor: pointer; }
   .site-nav { display: none; position: absolute; left: 16px; right: 16px; top: 72px; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 10px; box-shadow: var(--shadow); }
   .site-nav.open { display: grid; }
   .hero-grid, .two-col, .footer-grid { grid-template-columns: 1fr; }
-  .tree-grid, .exercise-grid, .safety-grid, .download-grid, .form-grid { grid-template-columns: 1fr; }
+  .tree-grid, .exercise-grid, .safety-grid, .download-grid, .knowledge-grid, .form-grid { grid-template-columns: 1fr; }
   .tool-row { grid-template-columns: 1fr; }
   .section { padding: 50px 0; }
 }
