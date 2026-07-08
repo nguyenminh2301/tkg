@@ -1,10 +1,12 @@
 // Nguồn dữ liệu duy nhất cho mục "Kiến thức" — dùng chung cho trang chủ
 // (assets/app.js) và trang đọc bài (assets/article.js).
 //
-// Cách thêm nội dung một bài viết đã có bản duyệt: tìm đúng slug bên dưới,
-// thêm khoá `body` là một mảng chuỗi HTML (mỗi phần tử là một khối, ví dụ
-// "<p>...</p>" hoặc "<ul>...</ul>"). Bài viết chưa có `body` sẽ tự động hiện
-// ghi chú "Đang cập nhật" trên cả trang chủ và trang đọc bài.
+// Cách thêm nội dung một bài viết đã có bản duyệt:
+// 1. Mở file content/articles/<slug>.html (đã tạo sẵn cho mọi slug bên dưới)
+//    và thay bằng nội dung HTML thật của bài viết.
+// 2. Thêm `ready: true` vào đúng bài trong danh sách bên dưới.
+// Bài viết chưa có `ready: true` sẽ tự động hiện ghi chú "Đang cập nhật"
+// trên cả trang chủ và trang đọc bài, và sẽ không tải file nội dung.
 
 export const knowledgeCategories = [
   {
@@ -12,7 +14,7 @@ export const knowledgeCategories = [
     number: 1,
     title: 'Tôi vừa thay khớp gối',
     articles: [
-      { slug: 'can-biet-gi', title: 'Sau thay khớp gối: tôi cần biết gì?' },
+      { slug: 'can-biet-gi', title: 'Sau thay khớp gối: tôi cần biết gì?', ready: true },
       { slug: 'truoc-khi-ve-nha', title: 'Trước khi về nhà: 10 điều cần kiểm tra' },
       { slug: 'dau-va-sung-sau-mo', title: 'Đau và sưng sau mổ' },
     ],

@@ -192,6 +192,20 @@ details { padding: 18px 20px; margin: 12px 0; box-shadow: none; }
 .article-body ul, .article-body ol { padding-left: 22px; }
 .article-body li { margin: 6px 0; }
 .article-footer-nav { margin-top: 40px; }
+
+.article-toc { background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 16px 20px; margin: 20px 0 28px; }
+.article-toc strong { display: block; margin-bottom: 8px; font-family: var(--font-display); }
+.article-toc ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.article-toc a { text-decoration: none; color: var(--brand-dark); font-weight: 600; }
+.article-toc a:hover { text-decoration: underline; }
+
+.callout { padding: 16px 18px; border-radius: var(--radius-md); margin: 22px 0; border-left: 4px solid; }
+.callout p:first-child { margin-top: 0; }
+.callout p:last-child { margin-bottom: 0; }
+.callout-info { background: var(--brand-soft); border-color: var(--brand); color: var(--brand-dark); }
+.callout-highlight { background: var(--warning-bg); border-color: var(--accent); color: var(--warning-ink); }
+
+.article-disclaimer { font-size: 14px; color: var(--muted); margin-top: 28px; }
 .status-pill { align-self: flex-start; margin-top: auto; padding: 4px 10px; border-radius: 999px; background: var(--surface-2); color: var(--muted); font-size: 12px; font-weight: 800; }
 
 .site-footer { background: var(--brand-dark); color: var(--brand-soft); padding: 34px 0; }

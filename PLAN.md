@@ -93,19 +93,30 @@ vẫn phải nghiêm túc, dễ đọc cho người lớn tuổi, không "màu m
     dùng cung cấp), mỗi chủ đề là một nhóm liệt kê các bài viết con — tổng
     19 bài.
   - Mỗi bài viết là một đường dẫn riêng `article.html?slug=...` (không tạo
-    19 file HTML riêng — dùng 1 trang mẫu `article.html` +
-    `assets/article.js` đọc `slug` từ URL và tra trong nguồn dữ liệu chung
-    `assets/content.js`). Cách này giúp việc "gửi bài dần dần" chỉ cần sửa
-    một chỗ (`assets/content.js`, thêm khoá `body`) mà không phải tạo file
-    mới hay sửa lại trang chủ.
-  - Bài chưa có `body` tự hiện khối "Bài viết đang được cập nhật" (dùng lại
-    style `.notice.warning` có sẵn).
+    19 file trang riêng — dùng 1 trang mẫu `article.html` +
+    `assets/article.js` đọc `slug` từ URL, tra tiêu đề/chủ đề trong
+    `assets/content.js`, rồi tải nội dung từ file HTML riêng của bài đó).
   - `article.html` có nút "← Trang chủ" ở header và nút lớn "← Quay lại
     trang chủ" ở cuối bài, đều trỏ về `index.html#knowledge`.
   - Đã kiểm thử: trang chủ hiện đúng 6 nhóm/19 link, bấm vào 1 bài chuyển
     đúng sang `article.html?slug=...`, nút quay lại về đúng
     `index.html#knowledge`, có xử lý trường hợp slug không tồn tại.
-- [ ] **Giai đoạn 7 — Tuỳ chọn nâng cao sau này** (chưa làm, chỉ đề xuất)
+- [x] **Giai đoạn 7 — File nội dung sẵn sàng cho từng bài, nhận bài đầu tiên**
+  - Tạo sẵn `content/articles/<slug>.html` cho toàn bộ 19 bài (rỗng, chỉ có
+    ghi chú "sẽ cập nhật tại đây") để mỗi khi có bài mới chỉ cần thay đúng
+    nội dung file đó.
+  - Quy trình cập nhật 1 bài: (1) thay nội dung file
+    `content/articles/<slug>.html` bằng HTML thật; (2) thêm `ready: true`
+    vào đúng bài trong `assets/content.js`. Bài `ready: true` mới được
+    `assets/article.js` tải file nội dung; bài chưa `ready` không tốn
+    request mạng, hiện thẳng khối "Đang cập nhật".
+  - Đã nhận và đưa vào bài đầu tiên: "Sau thay khớp gối: tôi cần biết gì?"
+    (`content/articles/can-biet-gi.html`) — có mục lục nhảy neo trong bài,
+    2 khối nhấn mạnh dùng class `.callout-info` / `.callout-highlight` (đổi
+    từ màu xanh dương/cam gốc người dùng gửi sang đúng tông thương hiệu
+    trang), và dòng miễn trừ trách nhiệm cuối bài `.article-disclaimer`.
+  - 18 bài còn lại vẫn ở trạng thái "Đang cập nhật" như thiết kế.
+- [ ] **Giai đoạn 8 — Tuỳ chọn nâng cao sau này** (chưa làm, chỉ đề xuất)
 
 ## 4. Đề xuất tích hợp miễn phí thêm (tuỳ chọn, chưa triển khai)
 

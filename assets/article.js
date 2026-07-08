@@ -13,24 +13,48 @@ function renderNotFound(root) {
   `;
 }
 
-function renderArticle(root, category, article) {
+function pendingNotice(article) {
+  return `
+    <div class="notice warning">
+      <p><strong>Bài viết đang được cập nhật.</strong></p>
+      <p>Nội dung sẽ được nhóm chuyên môn biên soạn và bổ sung sau.${article.summary ? ` Bài viết này dự kiến sẽ nói về: ${escapeHtml(article.summary)}` : ''}</p>
+    </div>
+  `;
+}
+
+function errorNotice() {
+  return `
+    <div class="notice warning">
+      <p><strong>Không tải được nội dung bài viết.</strong></p>
+      <p>Vui lòng thử tải lại trang.</p>
+    </div>
+  `;
+}
+
+async function loadArticleHtml(slug) {
+  const res = await fetch(`content/articles/${encodeURIComponent(slug)}.html`, { cache: 'no-store' });
+  if (!res.ok) throw new Error('fetch failed: ' + res.status);
+  return res.text();
+}
+
+async function renderArticle(root, category, article) {
   document.title = article.title + ' · Sổ tay PHCN sau thay khớp gối';
-  const bodyHtml = article.body && article.body.length
-    ? article.body.join('')
-    : `
-      <div class="notice warning">
-        <p><strong>Bài viết đang được cập nhật.</strong></p>
-        <p>Nội dung sẽ được nhóm chuyên môn biên soạn và bổ sung sau.${article.summary ? ` Bài viết này dự kiến sẽ nói về: ${escapeHtml(article.summary)}` : ''}</p>
-      </div>
-    `;
   root.innerHTML = `
     <p class="eyebrow">
       <svg class="icon icon-sm" width="24" height="24" aria-hidden="true"><use href="#icon-book"/></svg>
       <a href="index.html#knowledge">Kiến thức</a> · ${escapeHtml(category.title)}
     </p>
     <h1>${escapeHtml(article.title)}</h1>
-    <div class="article-body">${bodyHtml}</div>
+    <div class="article-body">${article.ready ? '' : pendingNotice(article)}</div>
   `;
+
+  if (!article.ready) return;
+  const body = root.querySelector('.article-body');
+  try {
+    body.innerHTML = await loadArticleHtml(article.slug);
+  } catch {
+    body.innerHTML = errorNotice();
+  }
 }
 
 function render() {

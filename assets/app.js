@@ -267,7 +267,7 @@ function renderKnowledge() {
         ${category.articles.map(article => `
           <li>
             <a href="article.html?slug=${encodeURIComponent(article.slug)}">${article.title}</a>
-            ${article.body ? '' : '<span class="status-pill">Đang cập nhật</span>'}
+            ${article.ready ? '' : '<span class="status-pill">Đang cập nhật</span>'}
           </li>
         `).join('')}
       </ul>
