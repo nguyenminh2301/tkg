@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Sổ tay điện tử hỗ trợ người bệnh tập phục hồi chức năng sau thay khớp gối. Website tĩnh mức 2 dùng GitHub Pages, có nhật ký tập luyện lưu cục bộ trên thiết bị." />
+  <title>Sổ tay PHCN sau thay khớp gối</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Bỏ qua menu, đến nội dung chính</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">🦵</div>
+        <div>
+          <strong>Sổ tay PHCN</strong>
+          <span>Sau thay khớp gối</span>
+        </div>
+      </div>
+      <button class="menu-toggle" aria-label="Mở hoặc đóng menu" aria-expanded="false">☰</button>
+      <nav class="site-nav" aria-label="Điều hướng chính">
+        <a href="#home">Trang chủ</a>
+        <a href="#roadmap">Lộ trình</a>
+        <a href="#exercises">Bài tập</a>
+        <a href="#diary">Nhật ký</a>
+        <a href="#safety">An toàn</a>
+        <a href="#faq">Hỏi đáp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero section">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Phiên bản GitHub Pages miễn phí · Mức 2</p>
+          <h1>Hướng dẫn người bệnh tập phục hồi chức năng tại nhà, dễ hiểu và có theo dõi hằng ngày.</h1>
+          <p class="lead">Website này hỗ trợ người bệnh sau thay khớp gối đọc hướng dẫn, xem lộ trình theo tuần, chọn bài tập phù hợp và ghi nhật ký tập luyện. Dữ liệu nhật ký chỉ lưu trên thiết bị của người bệnh, không gửi lên máy chủ.</p>
+          <div class="cta-row">
+            <a class="button primary" href="#today">Bắt đầu hôm nay</a>
+            <a class="button" href="#safety">Xem dấu hiệu cần báo bác sĩ</a>
+          </div>
+          <div class="notice warning">
+            <strong>Lưu ý an toàn:</strong> Nội dung này là tài liệu giáo dục sức khỏe, không thay thế tư vấn của bác sĩ hoặc kỹ thuật viên phục hồi chức năng. Người bệnh cần làm theo chỉ định riêng của bệnh viện.
+          </div>
+        </div>
+        <aside id="today" class="today-card" aria-labelledby="today-title">
+          <h2 id="today-title">Hôm nay tôi nên tập gì?</h2>
+          <label for="surgery-date">Ngày phẫu thuật</label>
+          <input id="surgery-date" type="date" />
+          <button id="save-date" class="button primary full">Lưu ngày phẫu thuật</button>
+          <div id="phase-output" class="phase-output" aria-live="polite">Chưa có ngày phẫu thuật. Hãy nhập ngày để website gợi ý giai đoạn tập.</div>
+          <div class="progress-box">
+            <div class="progress-label"><span>Tiến độ hôm nay</span><strong id="today-progress-text">0%</strong></div>
+            <div class="progress-bar"><span id="today-progress-bar"></span></div>
+          </div>
+          <div class="quick-actions">
+            <a href="#diary">Ghi nhật ký</a>
+            <a href="#exercises">Chọn bài tập</a>
+            <a href="javascript:window.print()">In trang</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section soft-bg">
+      <div class="container">
+        <p class="eyebrow">Cây nội dung theo mô hình NHS / AAOS / Arthritis UK</p>
+        <h2>Cấu trúc được thiết kế theo hành trình người bệnh</h2>
+        <div class="tree-grid">
+          <article class="tree-card">
+            <span>1</span>
+            <h3>Hiểu đúng</h3>
+            <p>Biết mục tiêu hồi phục, nguyên tắc đau an toàn, vai trò của tập sớm và khi nào cần hỏi nhân viên y tế.</p>
+          </article>
+          <article class="tree-card">
+            <span>2</span>
+            <h3>Lộ trình theo tuần</h3>
+            <p>0–2 tuần, 2–6 tuần, 6–12 tuần và sau 12 tuần; mỗi giai đoạn có mục tiêu, việc cần làm và điều cần tránh.</p>
+          </article>
+          <article class="tree-card">
+            <span>3</span>
+            <h3>Thư viện bài tập</h3>
+            <p>Mỗi bài tập có mục tiêu, tư thế, cách làm, số lần, lỗi thường gặp và cảnh báo dừng tập.</p>
+          </article>
+          <article class="tree-card">
+            <span>4</span>
+            <h3>Tự theo dõi</h3>
+            <p>Checklist hằng ngày, thang đau 0–10, sưng, thời gian đi bộ, bài đã tập và xuất nhật ký CSV.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap" class="section">
+      <div class="container">
+        <p class="eyebrow">Lộ trình hồi phục</p>
+        <h2>Chọn đúng giai đoạn, tập vừa sức, tăng dần</h2>
+        <div class="tabs" role="tablist" aria-label="Giai đoạn phục hồi">
+          <button class="tab active" data-tab="phase-1" role="tab" aria-selected="true">0–2 tuần</button>
+          <button class="tab" data-tab="phase-2" role="tab" aria-selected="false">2–6 tuần</button>
+          <button class="tab" data-tab="phase-3" role="tab" aria-selected="false">6–12 tuần</button>
+          <button class="tab" data-tab="phase-4" role="tab" aria-selected="false">Sau 12 tuần</button>
+        </div>
+        <div class="tab-panels">
+          <article id="phase-1" class="tab-panel active" role="tabpanel">
+            <h3>Giai đoạn 0–2 tuần: an toàn, giảm sưng, lấy lại vận động cơ bản</h3>
+            <ul class="check-list">
+              <li>Tập cổ chân, co cơ đùi, trượt gót và duỗi gối theo hướng dẫn.</li>
+              <li>Đi lại ngắn với khung tập đi/nạng nếu được cho phép.</li>
+              <li>Nâng chân, chườm lạnh và theo dõi vết mổ theo dặn dò của bệnh viện.</li>
+              <li>Không kê gối lâu dưới khoeo gối nếu bệnh viện không chỉ định.</li>
+            </ul>
+          </article>
+          <article id="phase-2" class="tab-panel" role="tabpanel">
+            <h3>Giai đoạn 2–6 tuần: tăng tầm vận động và sức cơ</h3>
+            <ul class="check-list">
+              <li>Duy trì bài tập duỗi/gập gối và bắt đầu bài ngồi đứng, nâng chân thẳng nếu phù hợp.</li>
+              <li>Tăng thời gian đi bộ từng ít một; ưu tiên đi đúng dáng hơn đi xa.</li>
+              <li>Theo dõi đau/sưng sau tập để điều chỉnh cường độ ngày hôm sau.</li>
+              <li>Hỏi bác sĩ/KTV PHCN trước khi tập cầu thang hoặc tăng tải.</li>
+            </ul>
+          </article>
+          <article id="phase-3" class="tab-panel" role="tabpanel">
+            <h3>Giai đoạn 6–12 tuần: phục hồi chức năng sinh hoạt</h3>
+            <ul class="check-list">
+              <li>Tăng sức bền bằng đi bộ, xe đạp tại chỗ hoặc bài thăng bằng nếu được phép.</li>
+              <li>Tập đứng lên-ngồi xuống, bước bục thấp, nâng gót và các bài kiểm soát thân người.</li>
+              <li>Tránh tăng khối lượng quá nhanh khi còn sưng hoặc đau tăng sau tập.</li>
+              <li>Tái khám/đánh giá lại nếu chức năng không cải thiện như kỳ vọng.</li>
+            </ul>
+          </article>
+          <article id="phase-4" class="tab-panel" role="tabpanel">
+            <h3>Sau 12 tuần: duy trì sức cơ, thăng bằng và hoạt động lâu dài</h3>
+            <ul class="check-list">
+              <li>Duy trì tập 2–3 ngày/tuần để bảo vệ khớp và khả năng vận động.</li>
+              <li>Ưu tiên hoạt động ít va đập: đi bộ, đạp xe, bơi hoặc bài dưới nước nếu phù hợp.</li>
+              <li>Trao đổi với bác sĩ trước khi quay lại các hoạt động nặng hoặc thể thao.</li>
+              <li>Tiếp tục theo dõi đau, sưng, khả năng đi lại và nguy cơ té ngã.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="daily" class="section soft-bg">
+      <div class="container two-col">
+        <div>
+          <p class="eyebrow">Checklist hằng ngày</p>
+          <h2>5 việc người bệnh cần nhớ</h2>
+          <p>Đánh dấu sau khi hoàn thành. Checklist chỉ lưu trên máy đang dùng.</p>
+        </div>
+        <div class="check-card" id="daily-checklist">
+          <label><input type="checkbox" data-daily="walk"> Tôi đã đi lại/tập đi theo hướng dẫn.</label>
+          <label><input type="checkbox" data-daily="exercise"> Tôi đã tập ít nhất một lượt bài tập được chỉ định.</label>
+          <label><input type="checkbox" data-daily="pain"> Tôi đã ghi mức đau hôm nay.</label>
+          <label><input type="checkbox" data-daily="swelling"> Tôi đã quan sát sưng/vết mổ hoặc vùng gối.</label>
+          <label><input type="checkbox" data-daily="safety"> Tôi đã kiểm tra dấu hiệu cần báo nhân viên y tế.</label>
+          <button id="reset-daily" class="button">Làm mới checklist hôm nay</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="exercises" class="section">
+      <div class="container">
+        <p class="eyebrow">Thư viện bài tập</p>
+        <h2>Mỗi bài tập trình bày theo cùng một mẫu để người bệnh dễ làm đúng</h2>
+        <div class="tool-row">
+          <input id="exercise-search" type="search" placeholder="Tìm bài tập: cổ chân, duỗi gối, đi bộ..." />
+          <select id="phase-filter" aria-label="Lọc theo giai đoạn">
+            <option value="all">Tất cả giai đoạn</option>
+            <option value="early">0–2 tuần</option>
+            <option value="middle">2–6 tuần</option>
+            <option value="late">6–12 tuần</option>
+            <option value="maintain">Duy trì</option>
+          </select>
+        </div>
+        <div id="exercise-list" class="exercise-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="diary" class="section soft-bg">
+      <div class="container">
+        <p class="eyebrow">Nhật ký tập luyện mức 2</p>
+        <h2>Người bệnh ghi lại đau, sưng, thời gian đi bộ và bài đã tập</h2>
+        <div class="privacy-note">Dữ liệu này lưu bằng <strong>localStorage</strong> trên trình duyệt hiện tại. Không dùng để thu thập dữ liệu nghiên cứu định danh. Nếu cần nghiên cứu, phải có hệ thống bảo mật và phê duyệt đạo đức riêng.</div>
+        <form id="diary-form" class="diary-form">
+          <div class="form-grid">
+            <label>Ngày ghi
+              <input type="date" name="date" required />
+            </label>
+            <label>Mức đau lúc nghỉ (0–10)
+              <input type="number" name="painRest" min="0" max="10" required />
+            </label>
+            <label>Mức đau sau tập (0–10)
+              <input type="number" name="painAfter" min="0" max="10" required />
+            </label>
+            <label>Sưng gối hôm nay
+              <select name="swelling">
+                <option value="Không rõ">Không rõ</option>
+                <option value="Không sưng hoặc giảm">Không sưng hoặc giảm</option>
+                <option value="Sưng nhẹ">Sưng nhẹ</option>
+                <option value="Sưng tăng">Sưng tăng</option>
+              </select>
+            </label>
+            <label>Đi bộ/tập đi bao nhiêu phút?
+              <input type="number" name="walkMinutes" min="0" max="300" />
+            </label>
+            <label>Bài đã tập
+              <input type="text" name="exerciseDone" placeholder="Ví dụ: cổ chân, trượt gót, co cơ đùi" />
+            </label>
+          </div>
+          <label>Ghi chú cho nhân viên y tế
+            <textarea name="note" rows="3" placeholder="Ví dụ: đau tăng về chiều, còn khó duỗi gối, hơi chóng mặt khi đứng lên..."></textarea>
+          </label>
+          <div class="cta-row">
+            <button class="button primary" type="submit">Lưu nhật ký</button>
+            <button id="export-csv" class="button" type="button">Xuất CSV</button>
+            <button id="clear-diary" class="button danger" type="button">Xóa nhật ký trên máy này</button>
+          </div>
+        </form>
+        <div class="table-wrap">
+          <table id="diary-table">
+            <caption>Nhật ký đã lưu trên thiết bị</caption>
+            <thead><tr><th>Ngày</th><th>Đau nghỉ</th><th>Đau sau tập</th><th>Sưng</th><th>Đi bộ</th><th>Bài đã tập</th><th>Ghi chú</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="safety" class="section emergency">
+      <div class="container">
+        <p class="eyebrow">An toàn trước tiên</p>
+        <h2>Khi nào cần liên hệ bệnh viện hoặc nhân viên y tế?</h2>
+        <div class="safety-grid">
+          <article><h3>Báo ngay</h3><p>Sốt, khó thở, đau ngực, ngất, đau/sưng bắp chân rõ, vết mổ chảy dịch/mủ, đỏ nóng lan rộng, đau tăng nhanh bất thường.</p></article>
+          <article><h3>Dừng bài tập và hỏi lại</h3><p>Đau sắc nhói, chóng mặt, hụt chân, gối sưng tăng nhiều sau tập, không thể chịu lực như hôm trước.</p></article>
+          <article><h3>Điều chỉnh cường độ</h3><p>Nếu đau sau tập tăng và kéo dài sang ngày hôm sau, giảm số lần/lượt tập và trao đổi với KTV PHCN.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="container narrow">
+        <p class="eyebrow">Câu hỏi thường gặp</p>
+        <h2>Giải thích ngắn, ít thuật ngữ</h2>
+        <details open>
+          <summary>Đau khi tập có bình thường không?</summary>
+          <p>Có thể có khó chịu nhẹ khi mới tập. Tuy nhiên, không nên cố tập qua đau nhiều, đau nhói hoặc đau làm bạn đi lại kém hơn. Hãy giảm cường độ và hỏi nhân viên y tế nếu đau kéo dài.</p>
+        </details>
+        <details>
+          <summary>Tôi có cần ghi nhật ký mỗi ngày không?</summary>
+          <p>Nên ghi ngắn gọn mỗi ngày trong các tuần đầu. Nhật ký giúp bạn và nhân viên y tế biết bài nào làm tốt, bài nào gây đau/sưng và khi nào cần điều chỉnh.</p>
+        </details>
+        <details>
+          <summary>Website này có thay thế tái khám không?</summary>
+          <p>Không. Website chỉ hỗ trợ nhắc việc và cung cấp hướng dẫn chung. Tái khám và hướng dẫn cá nhân hóa của bác sĩ/KTV PHCN vẫn là quyết định chính.</p>
+        </details>
+        <details>
+          <summary>Tôi có thể dùng website này cho nghiên cứu không?</summary>
+          <p>Phiên bản này phù hợp để phát tài liệu và hỗ trợ tự theo dõi không định danh. Nếu muốn thu thập dữ liệu nghiên cứu, cần hệ thống riêng có bảo mật, phân quyền, đồng thuận và phê duyệt đạo đức.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="downloads" class="section soft-bg">
+      <div class="container">
+        <p class="eyebrow">Tài liệu triển khai</p>
+        <h2>Các phần cần bổ sung trước khi phát chính thức</h2>
+        <div class="download-grid">
+          <article><h3>Video/hình tự quay</h3><p>Thay các khung minh họa bằng ảnh hoặc video do nhóm PHCN quay, được người bệnh/nhân viên đồng ý sử dụng.</p></article>
+          <article><h3>Duyệt chuyên môn</h3><p>Bác sĩ chấn thương chỉnh hình và KTV PHCN duyệt từng bài tập, số lần, chống chỉ định và dấu hiệu nguy hiểm.</p></article>
+          <article><h3>QR code</h3><p>Tạo QR cho trang chủ, thư viện bài tập và nhật ký; in vào sổ tay giấy và phiếu xuất viện.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Sổ tay PHCN sau thay khớp gối</strong>
+        <p>Bản mẫu mức 2 dùng GitHub Pages miễn phí. Cần duyệt chuyên môn trước khi triển khai cho người bệnh.</p>
+      </div>
+      <div>
+        <strong>Nguồn cấu trúc tham khảo</strong>
+        <p>NHS recovery structure · AAOS exercise template · Arthritis UK plain-language exercise page. Không sao chép nội dung/hình ảnh.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
