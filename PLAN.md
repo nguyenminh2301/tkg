@@ -120,4 +120,5 @@ kết "không thu thập dữ liệu" hiện tại của trang:
 | 2026-07-08 | 1 | Brand mark, favicon, meta SEO/OG/JSON-LD, icon sprite, khung `.reveal` | `c7cc681` |
 | 2026-07-08 | 3 | Thiết kế lại toàn bộ `assets/style.css` (bảng màu, serif, disclosure UI) | `56a2d05` |
 | 2026-07-08 | 4 | Scroll progress, reveal-on-scroll, disclosure `<details>` cho bài tập | `ba6669b` |
-| 2026-07-08 | 5 | Kiểm thử trình duyệt thật, gỡ `content-visibility`/lazy-render (phá điều hướng), tăng icon Kiến thức, print-color-adjust | (commit tiếp theo) |
+| 2026-07-08 | 5 | Kiểm thử trình duyệt thật, gỡ `content-visibility`/lazy-render (phá điều hướng), tăng icon Kiến thức, print-color-adjust | `d5361eb` (PR #1, merge `4832e25`) |
+| 2026-07-08 | 5 | Sửa icon to bất thường trên Chrome Android thật (thêm `width`/`height` trực tiếp trên mọi `<svg class="icon">`, không chỉ dựa CSS) — phát hiện qua ảnh chụp màn hình thật từ người dùng | `cabb505` (PR #2, merge `2d5c6b1`) |
