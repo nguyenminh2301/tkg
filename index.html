@@ -3,24 +3,69 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Sổ tay điện tử hỗ trợ người bệnh tập phục hồi chức năng sau thay khớp gối. Website tĩnh mức 2 dùng GitHub Pages, có nhật ký tập luyện lưu cục bộ trên thiết bị." />
+  <meta name="description" content="Sổ tay điện tử hỗ trợ người bệnh tập phục hồi chức năng sau thay khớp gối: lộ trình theo giai đoạn, thư viện bài tập, nhật ký tập luyện lưu cục bộ trên thiết bị, không gửi dữ liệu lên máy chủ." />
+  <meta name="theme-color" content="#0B3B33" />
   <title>Sổ tay PHCN sau thay khớp gối</title>
+
+  <link rel="canonical" href="https://nguyenminh2301.github.io/tkg/" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="assets/style.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sổ tay PHCN sau thay khớp gối" />
+  <meta property="og:description" content="Lộ trình hồi phục theo giai đoạn, thư viện bài tập và nhật ký tập luyện cho người bệnh sau thay khớp gối." />
+  <meta property="og:url" content="https://nguyenminh2301.github.io/tkg/" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sổ tay PHCN sau thay khớp gối" />
+  <meta name="twitter:description" content="Lộ trình hồi phục theo giai đoạn, thư viện bài tập và nhật ký tập luyện cho người bệnh sau thay khớp gối." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Sổ tay PHCN sau thay khớp gối",
+    "inLanguage": "vi",
+    "specialty": "https://schema.org/PhysicalTherapy",
+    "reviewedBy": { "@type": "Person", "name": "ThS. BSCKII. Võ Châu Duyên" },
+    "audience": { "@type": "PatientsAudience", "audienceType": "Người bệnh sau thay khớp gối" }
+  }
+  </script>
 </head>
 <body>
+  <!-- Icon sprite dùng chung, không tải thêm request nào -->
+  <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></symbol>
+    <symbol id="icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.67 4.67 4 5.5 4H12v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 5.5C20 4.67 19.33 4 18.5 4H12v16h6.5a1.5 1.5 0 0 0 1.5-1.5z"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/></symbol>
+    <symbol id="icon-printer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V4h12v5"/><rect x="3.5" y="9" width="17" height="7" rx="1.5"/><path d="M7 14h10v6H7z"/></symbol>
+    <symbol id="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><path d="M4 19h16"/></symbol>
+  </svg>
+
   <a class="skip-link" href="#main">Bỏ qua menu, đến nội dung chính</a>
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
 
   <header class="site-header">
     <div class="container header-inner">
-      <div class="brand">
-        <div class="brand-mark" aria-hidden="true">🦵</div>
-        <div>
+      <a class="brand" href="#home">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="16" fill="#0B3B33"/>
+          <rect x="11" y="36" width="7" height="14" rx="2" fill="#6FA89C"/>
+          <rect x="23" y="28" width="7" height="22" rx="2" fill="#3E8579"/>
+          <rect x="35" y="20" width="7" height="30" rx="2" fill="#BFE3D8"/>
+          <rect x="47" y="12" width="7" height="38" rx="2" fill="#E07A47"/>
+        </svg>
+        <span class="brand-word">
           <strong>Sổ tay PHCN</strong>
           <span>Sau thay khớp gối</span>
-        </div>
-      </div>
-      <button class="menu-toggle" aria-label="Mở hoặc đóng menu" aria-expanded="false">☰</button>
-      <nav class="site-nav" aria-label="Điều hướng chính">
+        </span>
+      </a>
+      <button class="menu-toggle" aria-label="Mở menu" aria-expanded="false" aria-controls="site-nav">
+        <svg class="icon" aria-hidden="true"><use href="#icon-menu"/></svg>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Điều hướng chính">
         <a href="#home">Trang chủ</a>
         <a href="#roadmap">Lộ trình</a>
         <a href="#exercises">Bài tập</a>
@@ -36,13 +81,14 @@
     <section id="home" class="hero section">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">Sổ tay người bệnh</p>
-          <h1>Phục hồi chức năng sau thay khớp gối</h1>
-          <p class="lead">Theo dõi lộ trình hồi phục, bài tập hằng ngày và nhật ký đau, sưng, đi bộ tại nhà.</p>
+          <p class="eyebrow">Sổ tay người bệnh · cập nhật 2026</p>
+          <h1>Hồi phục vững vàng sau thay khớp gối</h1>
+          <p class="lead">Theo dõi lộ trình hồi phục, bài tập hằng ngày và nhật ký đau, sưng, đi bộ tại nhà — theo đúng từng giai đoạn của bạn.</p>
           <div class="cta-row">
             <a class="button primary" href="#today">Bắt đầu hôm nay</a>
-            <a class="button" href="#safety">Khi nào cần báo ngay?</a>
+            <a class="button ghost" href="#safety">Khi nào cần báo ngay?</a>
           </div>
+          <p class="trust-line">Biên soạn cùng <strong>ThS. BSCKII. Võ Châu Duyên</strong> · không thu thập hay gửi dữ liệu cá nhân lên máy chủ</p>
           <div class="notice warning">
             Tài liệu hỗ trợ tự tập tại nhà. Người bệnh cần làm theo hướng dẫn của bác sĩ và kỹ thuật viên phục hồi chức năng.
           </div>
@@ -60,13 +106,13 @@
           <div class="quick-actions">
             <a href="#diary">Ghi nhật ký</a>
             <a href="#exercises">Chọn bài tập</a>
-            <a href="javascript:window.print()">In trang</a>
+            <a href="javascript:window.print()"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-printer"/></svg> In trang</a>
           </div>
         </aside>
       </div>
     </section>
 
-    <section class="section soft-bg">
+    <section class="section soft-bg reveal">
       <div class="container">
         <p class="eyebrow">Cấu trúc nội dung</p>
         <h2>Người bệnh cần gì sau khi ra viện?</h2>
@@ -95,7 +141,7 @@
       </div>
     </section>
 
-    <section id="roadmap" class="section">
+    <section id="roadmap" class="section reveal">
       <div class="container">
         <p class="eyebrow">Lộ trình hồi phục</p>
         <h2>Tập theo từng giai đoạn</h2>
@@ -146,7 +192,7 @@
       </div>
     </section>
 
-    <section id="daily" class="section soft-bg">
+    <section id="daily" class="section soft-bg reveal">
       <div class="container two-col">
         <div>
           <p class="eyebrow">Checklist hằng ngày</p>
@@ -164,10 +210,11 @@
       </div>
     </section>
 
-    <section id="exercises" class="section">
+    <section id="exercises" class="section reveal">
       <div class="container">
         <p class="eyebrow">Thư viện bài tập</p>
         <h2>Chọn bài tập phù hợp</h2>
+        <p class="lead-sm">Bấm "Xem cách tập" trên mỗi thẻ để hiện chi tiết — chỉ hiện những gì bạn cần lúc này.</p>
         <div class="tool-row">
           <input id="exercise-search" type="search" placeholder="Tìm bài tập: cổ chân, duỗi gối, đi bộ..." />
           <select id="phase-filter" aria-label="Lọc theo giai đoạn">
@@ -182,7 +229,7 @@
       </div>
     </section>
 
-    <section id="diary" class="section soft-bg">
+    <section id="diary" class="section soft-bg reveal">
       <div class="container">
         <p class="eyebrow">Nhật ký tập luyện</p>
         <h2>Nhật ký tập luyện</h2>
@@ -218,7 +265,7 @@
           </label>
           <div class="cta-row">
             <button class="button primary" type="submit">Lưu nhật ký</button>
-            <button id="export-csv" class="button" type="button">Xuất CSV</button>
+            <button id="export-csv" class="button" type="button"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-download"/></svg> Xuất CSV</button>
             <button id="clear-diary" class="button danger" type="button">Xóa nhật ký trên máy này</button>
           </div>
         </form>
@@ -232,49 +279,49 @@
       </div>
     </section>
 
-    <section id="safety" class="section emergency">
+    <section id="safety" class="section emergency reveal">
       <div class="container">
-        <p class="eyebrow">An toàn</p>
+        <p class="eyebrow"><svg class="icon icon-sm" aria-hidden="true"><use href="#icon-shield"/></svg> An toàn</p>
         <h2>Khi nào cần liên hệ nhân viên y tế?</h2>
         <div class="safety-grid">
-          <article><h3>Báo ngay</h3><p>Sốt, khó thở, đau ngực, ngất, đau hoặc sưng bắp chân rõ, vết mổ chảy dịch hoặc mủ, đỏ nóng lan rộng.</p></article>
+          <article class="urgent"><h3>Báo ngay</h3><p>Sốt, khó thở, đau ngực, ngất, đau hoặc sưng bắp chân rõ, vết mổ chảy dịch hoặc mủ, đỏ nóng lan rộng.</p></article>
           <article><h3>Dừng bài tập và hỏi lại</h3><p>Đau nhói, chóng mặt, hụt chân, gối sưng tăng nhiều sau tập, không chịu lực được như hôm trước.</p></article>
           <article><h3>Giảm cường độ</h3><p>Nếu đau sau tập tăng và kéo dài sang hôm sau, giảm số lần tập và trao đổi với KTV PHCN.</p></article>
         </div>
       </div>
     </section>
 
-    <section id="faq" class="section">
+    <section id="faq" class="section reveal">
       <div class="container narrow">
         <p class="eyebrow">Câu hỏi thường gặp</p>
         <h2>Một số thắc mắc</h2>
         <details open>
-          <summary>Đau khi tập có bình thường không?</summary>
+          <summary><span>Đau khi tập có bình thường không?</span><svg class="icon icon-sm chevron" aria-hidden="true"><use href="#icon-chevron"/></svg></summary>
           <p>Có thể hơi khó chịu khi mới tập. Đừng cố qua cơn đau nhói hoặc đau làm đi lại kém đi. Nếu đau kéo dài, hãy hỏi nhân viên y tế.</p>
         </details>
         <details>
-          <summary>Tôi có cần ghi nhật ký mỗi ngày không?</summary>
+          <summary><span>Tôi có cần ghi nhật ký mỗi ngày không?</span><svg class="icon icon-sm chevron" aria-hidden="true"><use href="#icon-chevron"/></svg></summary>
           <p>Nên ghi ngắn gọn mỗi ngày trong những tuần đầu. Nhật ký giúp bạn và nhân viên y tế dễ theo dõi khi tái khám.</p>
         </details>
         <details>
-          <summary>Website này có thay thế tái khám không?</summary>
+          <summary><span>Website này có thay thế tái khám không?</span><svg class="icon icon-sm chevron" aria-hidden="true"><use href="#icon-chevron"/></svg></summary>
           <p>Không. Đây chỉ là tài liệu hỗ trợ. Tái khám và hướng dẫn của bác sĩ vẫn là quyết định chính.</p>
         </details>
         <details>
-          <summary>Tôi nên làm theo bài tập nào?</summary>
+          <summary><span>Tôi nên làm theo bài tập nào?</span><svg class="icon icon-sm chevron" aria-hidden="true"><use href="#icon-chevron"/></svg></summary>
           <p>Làm theo chỉ định riêng của bệnh viện và KTV PHCN. Website gợi ý bài tập, không thay thế hướng dẫn cá nhân.</p>
         </details>
       </div>
     </section>
 
-    <section id="knowledge" class="section soft-bg">
+    <section id="knowledge" class="section soft-bg reveal">
       <div class="container">
         <p class="eyebrow">Kiến thức</p>
         <h2>Tài liệu sẽ cập nhật</h2>
-        <p class="lead">Các bài viết và video hướng dẫn sẽ được bổ sung sau khi được nhóm chuyên môn duyệt.</p>
+        <p class="lead-sm">Các bài viết và video hướng dẫn sẽ được bổ sung sau khi được nhóm chuyên môn duyệt.</p>
         <div class="knowledge-grid">
           <article class="knowledge-card">
-            <div class="article-thumb" aria-hidden="true">📄</div>
+            <div class="article-thumb" aria-hidden="true"><svg class="icon"><use href="#icon-book"/></svg></div>
             <div class="knowledge-body">
               <h3>Trước phẫu thuật</h3>
               <p>Chuẩn bị nhà cửa, dụng cụ hỗ trợ và phòng té ngã.</p>
@@ -282,7 +329,7 @@
             </div>
           </article>
           <article class="knowledge-card">
-            <div class="article-thumb" aria-hidden="true">📄</div>
+            <div class="article-thumb" aria-hidden="true"><svg class="icon"><use href="#icon-book"/></svg></div>
             <div class="knowledge-body">
               <h3>Tuần đầu sau mổ</h3>
               <p>Các việc cần theo dõi và bài tập cơ bản.</p>
@@ -290,7 +337,7 @@
             </div>
           </article>
           <article class="knowledge-card">
-            <div class="article-thumb" aria-hidden="true">📄</div>
+            <div class="article-thumb" aria-hidden="true"><svg class="icon"><use href="#icon-book"/></svg></div>
             <div class="knowledge-body">
               <h3>Đi lại an toàn</h3>
               <p>Dùng khung tập đi, nạng và lên xuống bậc.</p>
@@ -298,7 +345,7 @@
             </div>
           </article>
           <article class="knowledge-card">
-            <div class="article-thumb" aria-hidden="true">📄</div>
+            <div class="article-thumb" aria-hidden="true"><svg class="icon"><use href="#icon-book"/></svg></div>
             <div class="knowledge-body">
               <h3>Đau, sưng và vết mổ</h3>
               <p>Những dấu hiệu thường gặp và dấu hiệu cần báo.</p>
@@ -306,7 +353,7 @@
             </div>
           </article>
           <article class="knowledge-card">
-            <div class="article-thumb" aria-hidden="true">📄</div>
+            <div class="article-thumb" aria-hidden="true"><svg class="icon"><use href="#icon-book"/></svg></div>
             <div class="knowledge-body">
               <h3>Bài tập theo video</h3>
               <p>Video minh họa do nhóm PHCN tự quay.</p>
@@ -314,7 +361,7 @@
             </div>
           </article>
           <article class="knowledge-card">
-            <div class="article-thumb" aria-hidden="true">📄</div>
+            <div class="article-thumb" aria-hidden="true"><svg class="icon"><use href="#icon-book"/></svg></div>
             <div class="knowledge-body">
               <h3>Câu hỏi thường gặp</h3>
               <p>Các thắc mắc của người bệnh và người nhà.</p>
@@ -326,22 +373,22 @@
     </section>
   </main>
 
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <strong>Sổ tay PHCN sau thay khớp gối</strong>
-          <p>Tài liệu hỗ trợ người bệnh tự tập và theo dõi tại nhà. Không thay thế chỉ định của nhân viên y tế.</p>
-        </div>
-        <div>
-          <strong>Phụ trách chuyên môn</strong>
-          <p>ThS. BSCKII. Võ Châu Duyên.</p>
-        </div>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Sổ tay PHCN sau thay khớp gối</strong>
+        <p>Tài liệu hỗ trợ người bệnh tự tập và theo dõi tại nhà. Không thay thế chỉ định của nhân viên y tế.</p>
       </div>
-      <div class="container footer-bottom">
-        <p>© <span id="year"></span> Sổ tay PHCN sau thay khớp gối.</p>
+      <div>
+        <strong>Phụ trách chuyên môn</strong>
+        <p>ThS. BSCKII. Võ Châu Duyên.</p>
       </div>
-    </footer>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Sổ tay PHCN sau thay khớp gối.</p>
+    </div>
+  </footer>
 
-  <script src="assets/app.js"></script>
+  <script type="module" src="assets/app.js"></script>
 </body>
 </html>
