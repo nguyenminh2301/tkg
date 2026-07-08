@@ -91,11 +91,51 @@ function todayKey() {
 function setupMenu() {
   const toggle = $('.menu-toggle');
   const nav = $('.site-nav');
-  toggle?.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
+  const icon = toggle?.querySelector('use');
+  function setOpen(open) {
+    nav.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', String(open));
-  });
-  $$('.site-nav a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+    icon?.setAttribute('href', open ? '#icon-close' : '#icon-menu');
+  }
+  toggle?.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
+  $$('.site-nav a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+}
+
+function setupScrollProgress() {
+  const bar = $('#scroll-progress-bar');
+  if (!bar) return;
+  let ticking = false;
+  function update() {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+    bar.style.width = Math.min(100, Math.max(0, ratio * 100)) + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+  update();
+}
+
+function setupReveal() {
+  const items = $$('.reveal');
+  if (!items.length) return;
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  items.forEach(el => observer.observe(el));
 }
 
 function setupTabs() {
@@ -151,14 +191,18 @@ function renderExercises() {
   });
   list.innerHTML = filtered.map(ex => `
     <article class="exercise-card">
-      <div class="placeholder" aria-hidden="true">Ảnh/video sẽ cập nhật</div>
       <div class="tag-row">${ex.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
       <h3>${ex.title}</h3>
       <p><strong>Mục tiêu:</strong> ${ex.goal}</p>
-      <p><strong>Cách tập:</strong></p>
-      <ul>${ex.steps.map(s => `<li>${s}</li>`).join('')}</ul>
-      <p><strong>Số lần gợi ý:</strong> ${ex.dose}</p>
-      <p><strong>Khi cần dừng:</strong> ${ex.stop}</p>
+      <details>
+        <summary>Xem cách tập <svg class="icon icon-sm chevron" aria-hidden="true"><use href="#icon-chevron"/></svg></summary>
+        <div class="details-body">
+          <p><strong>Cách tập:</strong></p>
+          <ul>${ex.steps.map(s => `<li>${s}</li>`).join('')}</ul>
+          <p><strong>Số lần gợi ý:</strong> ${ex.dose}</p>
+          <p><strong>Khi cần dừng:</strong> ${ex.stop}</p>
+        </div>
+      </details>
       <label class="done-row"><input type="checkbox" data-exdone="${ex.id}" ${done.includes(ex.id) ? 'checked' : ''}> Tôi đã tập bài này hôm nay</label>
     </article>
   `).join('') || '<p>Không tìm thấy bài tập phù hợp.</p>';
@@ -270,6 +314,8 @@ function escapeHtml(value) {
 }
 
 setupMenu();
+setupScrollProgress();
+setupReveal();
 setupTabs();
 setupPhase();
 setupDailyChecklist();
