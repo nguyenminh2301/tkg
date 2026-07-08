@@ -220,21 +220,7 @@ function renderExercises() {
 function setupExercises() {
   $('#exercise-search')?.addEventListener('input', renderExercises);
   $('#phase-filter')?.addEventListener('change', renderExercises);
-
-  const section = $('#exercises');
-  if (!section || !('IntersectionObserver' in window)) {
-    renderExercises();
-    return;
-  }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        renderExercises();
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { rootMargin: '200px' });
-  observer.observe(section);
+  renderExercises();
 }
 
 function setupDailyChecklist() {

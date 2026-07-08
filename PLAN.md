@@ -54,8 +54,12 @@ vẫn phải nghiêm túc, dễ đọc cho người lớn tuổi, không "màu m
   - Thẻ bài tập: ẩn "cách tập / liều lượng / khi cần dừng" trong `<details>`,
     chỉ hiện mục tiêu + tag ngay từ đầu — người dùng bấm "Xem cách tập" mới
     hiện chi tiết.
-  - Thêm `content-visibility: auto` cho mọi section dưới hero để trình duyệt
-    bỏ qua việc dựng layout/paint cho phần chưa cuộn tới.
+  - ~~`content-visibility: auto` cho mọi section~~ — đã thử nhưng **bỏ** sau
+    khi kiểm thử: chiều cao ước lượng (`contain-intrinsic-size`) lệch quá xa
+    chiều cao thật của từng section khiến `scrollIntoView`/nhấp menu điều
+    hướng có lúc dừng sai section (ví dụ bấm "An toàn" lại dừng ở "Nhật ký").
+    Vì mọi section đều là đích điều hướng trong menu, ưu tiên điều hướng đúng
+    hơn phần tối ưu paint nhỏ này.
 - [x] **Giai đoạn 3 — Thiết kế lại CSS toàn bộ**
   - Áp bảng màu/token mới, thang chữ rõ ràng, bo góc/khoảng cách nhất quán,
     thẻ (card) có chiều sâu nhẹ, trạng thái hover/focus rõ ràng cho a11y.
@@ -64,14 +68,26 @@ vẫn phải nghiêm túc, dễ đọc cho người lớn tuổi, không "màu m
 - [x] **Giai đoạn 4 — Hành vi JS mới**
   - Thanh tiến trình cuộn trang (scroll progress) ở đầu trang.
   - `IntersectionObserver` cho hiệu ứng reveal.
-  - Trì hoãn dựng danh sách bài tập (chỉ render khi section Bài tập lọt vào
-    khung nhìn lần đầu) để giảm việc dựng DOM lúc tải trang.
+  - ~~Trì hoãn dựng danh sách bài tập tới khi cuộn tới~~ — cũng **bỏ** cùng
+    lý do: dựng muộn 9 thẻ bài tập chèn thêm chiều cao ngay giữa lúc trang
+    đang cuộn tới một mục phía sau (Nhật ký/An toàn/Kiến thức), làm lệch vị
+    trí dừng. Chi phí dựng 9 thẻ nhỏ lúc tải trang là không đáng kể, nên giữ
+    render ngay như bản gốc — ưu tiên điều hướng đúng hơn lợi ích tối ưu nhỏ.
   - `<script type="module">` để script tự động hoãn (defer) không chặn tải
     trang.
 - [x] **Giai đoạn 5 — Kiểm thử**
   - Mở bằng trình duyệt thật (Chromium có sẵn), chụp ảnh màn hình desktop +
     mobile, kiểm tra: menu mobile, tab lộ trình, bật/tắt chi tiết bài tập,
     nhật ký lưu localStorage, xuất CSV, in trang.
+  - Phát hiện và sửa 2 lỗi qua kiểm thử thật (xem phần bị gạch ngang ở Giai
+    đoạn 2 và 4 phía trên): cả hai đều là trường hợp "tối ưu" làm hỏng việc
+    nhấp menu điều hướng đến đúng section — đã gỡ bỏ, xác nhận lại bằng script
+    tự động bấm qua cả 6 mục menu ngay từ lúc mới tải trang, tất cả đều dừng
+    đúng vị trí.
+  - Icon "sách" ở Kiến thức lúc đầu quá nhỏ (22px) trong khung ảnh lớn, nhìn
+    trống trải — đã tăng lên 40px.
+  - Thêm `print-color-adjust: exact` để màu nền (thẻ cảnh báo, khối "An toàn"
+    tối màu...) in ra đúng màu thay vì bị trình duyệt bỏ nền khi in.
 - [ ] **Giai đoạn 6 — Tuỳ chọn nâng cao sau này** (chưa làm, chỉ đề xuất)
 
 ## 4. Đề xuất tích hợp miễn phí thêm (tuỳ chọn, chưa triển khai)
@@ -100,5 +116,8 @@ kết "không thu thập dữ liệu" hiện tại của trang:
 
 | Ngày | Giai đoạn | Việc đã làm | Commit |
 |---|---|---|---|
-| 2026-07-08 | 0 | Viết kế hoạch (`PLAN.md`) | (xem lịch sử git) |
-| 2026-07-08 | 1–5 | Thiết kế lại thương hiệu, cấu trúc bộc lộ dần, CSS, JS, kiểm thử trình duyệt | (xem lịch sử git) |
+| 2026-07-08 | 0 | Viết kế hoạch (`PLAN.md`) | `dcaf8f1` |
+| 2026-07-08 | 1 | Brand mark, favicon, meta SEO/OG/JSON-LD, icon sprite, khung `.reveal` | `c7cc681` |
+| 2026-07-08 | 3 | Thiết kế lại toàn bộ `assets/style.css` (bảng màu, serif, disclosure UI) | `56a2d05` |
+| 2026-07-08 | 4 | Scroll progress, reveal-on-scroll, disclosure `<details>` cho bài tập | `ba6669b` |
+| 2026-07-08 | 5 | Kiểm thử trình duyệt thật, gỡ `content-visibility`/lazy-render (phá điều hướng), tăng icon Kiến thức, print-color-adjust | (commit tiếp theo) |
