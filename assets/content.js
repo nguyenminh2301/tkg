@@ -24,7 +24,7 @@ export const knowledgeCategories = [
     number: 2,
     title: 'Chăm sóc tại nhà 2 tuần đầu',
     articles: [
-      { slug: 'cham-soc-vet-mo', title: 'Chăm sóc vết mổ' },
+      { slug: 'cham-soc-vet-mo', title: 'Chăm sóc vết mổ tại nhà', ready: true },
       { slug: 'dung-thuoc-dung-cach', title: 'Dùng thuốc đúng cách' },
       { slug: 'ghi-nhat-ky-hoi-phuc', title: 'Ghi nhật ký hồi phục' },
     ],
@@ -35,7 +35,7 @@ export const knowledgeCategories = [
     title: 'Tập luyện và đi lại',
     articles: [
       { slug: 'tap-ngay-1-7', title: 'Ngày 1–7 sau ra viện: tập thế nào cho an toàn?', ready: true },
-      { slug: '5-bai-tap-co-ban', title: '5 bài tập cơ bản' },
+      { slug: '5-bai-tap-co-ban', title: 'Năm bài tập cơ bản sau thay khớp gối', ready: true },
       { slug: 'di-lai-dung-cu-ho-tro', title: 'Đi lại với khung/nạng/gậy' },
       { slug: 'phong-te-nga', title: 'Phòng té ngã' },
     ],
