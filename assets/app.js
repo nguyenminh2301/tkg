@@ -180,6 +180,42 @@ function setupPhase() {
   render();
 }
 
+function classifyBmi(bmi) {
+  if (bmi < 18.5) return 'Thiếu cân';
+  if (bmi < 23) return 'Bình thường';
+  if (bmi < 25) return 'Thừa cân';
+  if (bmi < 30) return 'Béo phì độ I';
+  return 'Béo phì độ II';
+}
+
+function setupBmi() {
+  const heightInput = $('#bmi-height');
+  const weightInput = $('#bmi-weight');
+  const output = $('#bmi-output');
+  if (!heightInput || !weightInput || !output) return;
+
+  const savedHeight = storage.get('bmiHeight', '');
+  const savedWeight = storage.get('bmiWeight', '');
+  if (savedHeight) heightInput.value = savedHeight;
+  if (savedWeight) weightInput.value = savedWeight;
+
+  function calculate() {
+    const heightCm = parseFloat(heightInput.value);
+    const weightKg = parseFloat(weightInput.value);
+    if (!heightCm || !weightKg || heightCm <= 0 || weightKg <= 0) {
+      output.textContent = 'Vui lòng nhập chiều cao và cân nặng hợp lệ.';
+      return;
+    }
+    const heightM = heightCm / 100;
+    const bmi = weightKg / (heightM * heightM);
+    output.textContent = `BMI của bạn là ${bmi.toFixed(1)} — ${classifyBmi(bmi)}. Chỉ số này chỉ mang tính tham khảo, hãy trao đổi thêm với bác sĩ hoặc kỹ thuật viên phục hồi chức năng.`;
+    storage.set('bmiHeight', heightCm);
+    storage.set('bmiWeight', weightKg);
+  }
+
+  $('#bmi-calc')?.addEventListener('click', calculate);
+}
+
 function renderExercises() {
   const search = ($('#exercise-search')?.value || '').toLowerCase().trim();
   const phase = $('#phase-filter')?.value || 'all';
@@ -341,6 +377,7 @@ setupScrollProgress();
 setupReveal();
 setupTabs();
 setupPhase();
+setupBmi();
 setupDailyChecklist();
 setupExercises();
 setupDiary();

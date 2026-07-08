@@ -37,6 +37,26 @@ async function loadArticleHtml(slug) {
   return res.text();
 }
 
+function videoFacade(videoId) {
+  return `
+    <div class="video-embed" data-video-id="${escapeHtml(videoId)}">
+      <button class="video-facade" type="button" aria-label="Xem video hướng dẫn">
+        <svg class="icon" width="48" height="48" aria-hidden="true"><use href="#icon-play"/></svg>
+        <span>Xem video hướng dẫn</span>
+      </button>
+    </div>
+  `;
+}
+
+function setupVideoFacade(root) {
+  const wrap = root.querySelector('.video-embed');
+  const button = wrap?.querySelector('.video-facade');
+  button?.addEventListener('click', () => {
+    const videoId = wrap.dataset.videoId;
+    wrap.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=1" title="Video hướng dẫn" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+  }, { once: true });
+}
+
 async function renderArticle(root, category, article) {
   document.title = article.title + ' · Sổ tay PHCN sau thay khớp gối';
   root.innerHTML = `
@@ -45,8 +65,10 @@ async function renderArticle(root, category, article) {
       <a href="index.html#knowledge">Kiến thức</a> · ${escapeHtml(category.title)}
     </p>
     <h1>${escapeHtml(article.title)}</h1>
+    ${article.video ? videoFacade(article.video) : ''}
     <div class="article-body">${article.ready ? '' : pendingNotice(article)}</div>
   `;
+  if (article.video) setupVideoFacade(root);
 
   if (!article.ready) return;
   const body = root.querySelector('.article-body');

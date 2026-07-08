@@ -7,6 +7,12 @@
 // 2. Thêm `ready: true` vào đúng bài trong danh sách bên dưới.
 // Bài viết chưa có `ready: true` sẽ tự động hiện ghi chú "Đang cập nhật"
 // trên cả trang chủ và trang đọc bài, và sẽ không tải file nội dung.
+//
+// Để gắn video YouTube đã duyệt chuyên môn vào một bài: thêm khoá `video`
+// với giá trị là ID video YouTube (đoạn ký tự sau "v=" trong link, ví dụ
+// link "https://www.youtube.com/watch?v=dQw4w9WgXcQ" thì video là
+// "dQw4w9WgXcQ"). Video sẽ hiện dưới dạng ảnh đại diện, chỉ tải khi người
+// bệnh bấm xem (không tự động gửi dữ liệu cho YouTube khi mới vào trang).
 
 export const knowledgeCategories = [
   {

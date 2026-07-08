@@ -70,6 +70,7 @@
         <a href="#roadmap">Lộ trình</a>
         <a href="#exercises">Bài tập</a>
         <a href="#diary">Nhật ký</a>
+        <a href="#tools">Công cụ</a>
         <a href="#knowledge">Kiến thức</a>
         <a href="#safety">An toàn</a>
         <a href="#faq">Hỏi đáp</a>
@@ -275,6 +276,26 @@
             <thead><tr><th>Ngày</th><th>Đau nghỉ</th><th>Đau sau tập</th><th>Sưng</th><th>Đi bộ</th><th>Bài đã tập</th><th>Ghi chú</th></tr></thead>
             <tbody></tbody>
           </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools" class="section soft-bg reveal">
+      <div class="container narrow">
+        <p class="eyebrow">Công cụ hỗ trợ</p>
+        <h2>Tính chỉ số BMI</h2>
+        <p class="lead-sm">Cân nặng ảnh hưởng đến tải trọng lên khớp gối khi đi lại. Chỉ số này chỉ mang tính tham khảo, không thay thế đánh giá của bác sĩ hoặc kỹ thuật viên phục hồi chức năng.</p>
+        <div class="today-card">
+          <div class="bmi-inputs">
+            <label>Chiều cao (cm)
+              <input id="bmi-height" type="number" min="100" max="250" inputmode="decimal" placeholder="Ví dụ: 160" />
+            </label>
+            <label>Cân nặng (kg)
+              <input id="bmi-weight" type="number" min="20" max="250" inputmode="decimal" placeholder="Ví dụ: 55" />
+            </label>
+          </div>
+          <button id="bmi-calc" class="button primary full">Tính chỉ số BMI</button>
+          <div id="bmi-output" class="phase-output" aria-live="polite">Nhập chiều cao và cân nặng để xem chỉ số BMI.</div>
         </div>
       </div>
     </section>
