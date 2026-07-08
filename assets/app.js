@@ -12,74 +12,74 @@ const storage = {
 const exercises = [
   {
     id: 'ankle-pump', phase: ['early'], title: 'Tập cổ chân',
-    goal: 'Giúp tuần hoàn máu, giảm nguy cơ ứ trệ và hỗ trợ giảm sưng.',
-    steps: ['Nằm hoặc ngồi, duỗi chân thoải mái.', 'Gập bàn chân lên về phía người, rồi đạp nhẹ xuống.', 'Làm chậm, đều, không nín thở.'],
-    dose: '10–20 lần/lượt, nhiều lượt trong ngày nếu được cho phép.',
-    stop: 'Dừng nếu đau bắp chân tăng rõ, khó thở, đau ngực hoặc chóng mặt.',
+    goal: 'Giúp tuần hoàn máu và giảm sưng.',
+    steps: ['Nằm hoặc ngồi, duỗi chân thoải mái.', 'Gập bàn chân lên, rồi đạp nhẹ xuống.', 'Làm chậm, đều, không nín thở.'],
+    dose: '10–20 lần/lượt, nhiều lượt trong ngày.',
+    stop: 'Dừng nếu đau bắp chân tăng rõ, khó thở hoặc chóng mặt.',
     tags: ['0–2 tuần', 'tuần hoàn', 'dễ tập']
   },
   {
     id: 'quad-set', phase: ['early','middle'], title: 'Co cơ đùi trước',
-    goal: 'Đánh thức cơ đùi trước và hỗ trợ duỗi gối.',
-    steps: ['Nằm hoặc ngồi duỗi chân.', 'Ấn nhẹ mặt sau gối xuống giường bằng cách siết cơ đùi.', 'Giữ 5 giây rồi thả lỏng.'],
-    dose: '10 lần/lượt, 2–4 lượt/ngày theo hướng dẫn.',
-    stop: 'Không cố ép nếu đau nhói ở gối hoặc vết mổ căng đau bất thường.',
+    goal: 'Đánh thức cơ đùi trước, hỗ trợ duỗi gối.',
+    steps: ['Nằm hoặc ngồi duỗi chân.', 'Ấn nhẹ mặt sau gối xuống giường.', 'Giữ 5 giây rồi thả lỏng.'],
+    dose: '10 lần/lượt, 2–4 lượt/ngày.',
+    stop: 'Không cố ép nếu đau nhói ở gối hoặc vết mổ căng.',
     tags: ['0–2 tuần', 'sức cơ', 'duỗi gối']
   },
   {
     id: 'heel-slide', phase: ['early','middle'], title: 'Trượt gót để gập gối',
-    goal: 'Tăng dần khả năng gập gối trong giới hạn an toàn.',
-    steps: ['Nằm hoặc ngồi, đặt gót chân trên mặt giường.', 'Từ từ kéo gót về phía mông để gập gối.', 'Giữ ngắn rồi trượt chân duỗi ra lại.'],
-    dose: '5–10 lần/lượt, tăng dần nếu đau/sưng không tăng.',
-    stop: 'Dừng nếu đau sắc, co cứng nhiều hoặc sưng tăng rõ sau tập.',
+    goal: 'Tăng dần khả năng gập gối.',
+    steps: ['Nằm hoặc ngồi, đặt gót trên mặt giường.', 'Từ từ kéo gót về phía mông.', 'Giữ rồi trượt chân duỗi ra lại.'],
+    dose: '5–10 lần/lượt, tăng dần nếu đau sưng không tăng.',
+    stop: 'Dừng nếu đau sắc hoặc sưng tăng rõ sau tập.',
     tags: ['0–2 tuần', 'tầm vận động', 'gập gối']
   },
   {
     id: 'knee-extension', phase: ['early','middle'], title: 'Tập duỗi gối nhẹ',
-    goal: 'Giúp tránh tình trạng gối co gập kéo dài.',
-    steps: ['Nằm hoặc ngồi, đặt khăn cuộn dưới cổ chân nếu được hướng dẫn.', 'Thả lỏng để gối duỗi dần.', 'Có thể kết hợp siết cơ đùi nhẹ.'],
+    goal: 'Tránh gối co gập kéo dài.',
+    steps: ['Nằm hoặc ngồi, kê khăn cuộn dưới cổ chân nếu được hướng dẫn.', 'Thả lỏng để gối duỗi dần.', 'Có thể siết cơ đùi nhẹ.'],
     dose: 'Mỗi lần vài phút, theo mức chịu được.',
     stop: 'Không kê gối lâu dưới khoeo gối nếu bệnh viện không dặn.',
     tags: ['duỗi gối', '0–2 tuần', 'cẩn thận']
   },
   {
     id: 'straight-leg-raise', phase: ['middle','late'], title: 'Nâng chân thẳng',
-    goal: 'Tăng sức cơ đùi trước và khả năng kiểm soát chân.',
+    goal: 'Tăng sức cơ đùi trước.',
     steps: ['Nằm ngửa, một chân co, chân tập duỗi thẳng.', 'Siết cơ đùi rồi nâng chân lên thấp.', 'Giữ 3–5 giây, hạ xuống chậm.'],
-    dose: '5–10 lần/lượt, chỉ tập khi kiểm soát được gối.',
+    dose: '5–10 lần/lượt, tập khi kiểm soát được gối.',
     stop: 'Dừng nếu không giữ được gối thẳng hoặc đau tăng rõ.',
     tags: ['2–6 tuần', 'sức cơ', 'kiểm soát']
   },
   {
     id: 'sit-stand', phase: ['middle','late','maintain'], title: 'Đứng lên – ngồi xuống',
-    goal: 'Phục hồi hoạt động sinh hoạt hằng ngày.',
-    steps: ['Ngồi trên ghế vững, chân đặt chắc trên sàn.', 'Nghiêng người nhẹ về trước, đứng lên chậm.', 'Ngồi xuống chậm, kiểm soát gối và thân người.'],
+    goal: 'Phục hồi sinh hoạt hằng ngày.',
+    steps: ['Ngồi trên ghế vững, chân đặt chắc trên sàn.', 'Nghiêng người nhẹ về trước, đứng lên chậm.', 'Ngồi xuống chậm, kiểm soát gối.'],
     dose: '5–10 lần/lượt, 1–3 lượt tùy sức.',
     stop: 'Dừng nếu chóng mặt, hụt chân hoặc đau tăng nhiều.',
     tags: ['2–6 tuần', 'sinh hoạt', 'sức cơ']
   },
   {
     id: 'calf-raise', phase: ['late','maintain'], title: 'Nhón gót có điểm tựa',
-    goal: 'Tăng sức cơ cẳng chân và hỗ trợ thăng bằng.',
-    steps: ['Đứng bám ghế hoặc tường chắc chắn.', 'Nhón hai gót lên chậm.', 'Hạ xuống chậm, giữ thân người thẳng.'],
+    goal: 'Tăng sức cơ cẳng chân, hỗ trợ thăng bằng.',
+    steps: ['Đứng bám ghế hoặc tường chắc chắn.', 'Nhón hai gót lên chậm.', 'Hạ xuống chậm, giữ người thẳng.'],
     dose: '10 lần/lượt, 1–2 lượt nếu an toàn.',
     stop: 'Không tập nếu chóng mặt, mất thăng bằng hoặc đau tăng.',
     tags: ['6–12 tuần', 'thăng bằng', 'sức cơ']
   },
   {
     id: 'step-up', phase: ['late','maintain'], title: 'Bước lên bục thấp',
-    goal: 'Chuẩn bị cho lên xuống bậc và hoạt động ngoài nhà.',
-    steps: ['Dùng bục thấp chắc chắn, có tay vịn nếu cần.', 'Bước một chân lên, đưa chân còn lại lên theo.', 'Bước xuống chậm, kiểm soát gối.'],
-    dose: '5–10 lần mỗi bên, chỉ tập khi đã được cho phép.',
-    stop: 'Không tập nếu gối khuỵu, đau tăng hoặc không có điểm bám an toàn.',
+    goal: 'Chuẩn bị lên xuống bậc.',
+    steps: ['Dùng bục thấp chắc chắn, có tay vịn nếu cần.', 'Bước một chân lên, đưa chân kia theo.', 'Bước xuống chậm, kiểm soát gối.'],
+    dose: '5–10 lần mỗi bên, tập khi đã được cho phép.',
+    stop: 'Không tập nếu gối khuỵu, đau tăng hoặc thiếu điểm bám.',
     tags: ['6–12 tuần', 'cầu thang', 'chức năng']
   },
   {
     id: 'walking', phase: ['early','middle','late','maintain'], title: 'Tập đi bộ tăng dần',
-    goal: 'Tăng tự tin khi đi lại, sức bền và chức năng hằng ngày.',
-    steps: ['Dùng dụng cụ hỗ trợ theo chỉ định.', 'Đi quãng ngắn, mặt phẳng, đủ sáng.', 'Tăng thời gian từng ít một, ưu tiên dáng đi an toàn.'],
-    dose: 'Bắt đầu ngắn, chia nhiều lượt trong ngày; tăng theo hướng dẫn.',
-    stop: 'Dừng nếu hụt hơi, chóng mặt, đau/sưng tăng hoặc dáng đi xấu đi.',
+    goal: 'Tăng tự tin đi lại và sức bền.',
+    steps: ['Dùng dụng cụ hỗ trợ theo chỉ định.', 'Đi quãng ngắn, mặt phẳng, đủ sáng.', 'Tăng thời gian từng ít một.'],
+    dose: 'Bắt đầu ngắn, chia nhiều lượt trong ngày.',
+    stop: 'Dừng nếu hụt hơi, chóng mặt, đau sưng tăng hoặc dáng đi xấu.',
     tags: ['mọi giai đoạn', 'đi lại', 'sức bền']
   }
 ];
@@ -116,11 +116,11 @@ function computePhase(dateString) {
   const now = new Date();
   const days = Math.floor((now - surgery) / (1000 * 60 * 60 * 24));
   if (Number.isNaN(days)) return null;
-  if (days < 0) return {days, text: `Còn ${Math.abs(days)} ngày đến ngày phẫu thuật. Hãy chuẩn bị nhà cửa, dụng cụ hỗ trợ và hỏi bệnh viện về bài tập trước mổ.`};
-  if (days <= 14) return {days, text: `Ngày thứ ${days} sau mổ: giai đoạn 0–2 tuần. Ưu tiên an toàn, giảm sưng, tập cổ chân, co cơ đùi, trượt gót và tập đi theo hướng dẫn.`};
-  if (days <= 42) return {days, text: `Ngày thứ ${days} sau mổ: giai đoạn 2–6 tuần. Tăng dần tầm vận động, sức cơ, đi bộ và sinh hoạt cơ bản.`};
-  if (days <= 84) return {days, text: `Ngày thứ ${days} sau mổ: giai đoạn 6–12 tuần. Tập chức năng, sức bền, thăng bằng và quay lại hoạt động hằng ngày.`};
-  return {days, text: `Ngày thứ ${days} sau mổ: giai đoạn duy trì. Tiếp tục tập đều để bảo vệ sức cơ, tầm vận động và giảm nguy cơ té ngã.`};
+  if (days < 0) return {days, text: `Còn ${Math.abs(days)} ngày đến phẫu thuật. Hãy chuẩn bị nhà cửa, dụng cụ hỗ trợ và hỏi bệnh viện về bài tập được phép.`};
+  if (days <= 14) return {days, text: `Ngày ${days} sau mổ: ưu tiên an toàn, giảm sưng, tập nhẹ và đi lại theo hướng dẫn.`};
+  if (days <= 42) return {days, text: `Ngày ${days} sau mổ: tăng dần gập duỗi gối, sức cơ và đi bộ.`};
+  if (days <= 84) return {days, text: `Ngày ${days} sau mổ: tập sinh hoạt, thăng bằng và sức bền.`};
+  return {days, text: `Ngày ${days} sau mổ: duy trì tập đều và phòng té ngã.`};
 }
 
 function setupPhase() {
@@ -151,7 +151,7 @@ function renderExercises() {
   });
   list.innerHTML = filtered.map(ex => `
     <article class="exercise-card">
-      <div class="placeholder" aria-hidden="true">Ảnh/video tự quay</div>
+      <div class="placeholder" aria-hidden="true">Ảnh/video sẽ cập nhật</div>
       <div class="tag-row">${ex.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
       <h3>${ex.title}</h3>
       <p><strong>Mục tiêu:</strong> ${ex.goal}</p>

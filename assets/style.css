@@ -117,6 +117,7 @@ summary { font-weight: 850; cursor: pointer; }
 .knowledge-body p { margin: 0; color: var(--muted); }
 .card-link { margin-top: auto; font-weight: 800; color: var(--brand-dark); text-decoration: none; }
 .card-link:hover { text-decoration: underline; }
+.status-pill { align-self: flex-start; margin-top: auto; padding: 4px 10px; border-radius: 999px; background: #eef2f4; color: var(--muted); font-size: 12px; font-weight: 800; }
 .footer-bottom { border-top: 1px solid rgba(223,243,240,.18); margin-top: 24px; padding-top: 18px; }
 .footer-bottom p { color: #c6dbd8; font-size: 14px; margin: 0; }
 .site-footer { background: #102a2a; color: #dff3f0; padding: 34px 0; }
