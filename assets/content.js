@@ -34,7 +34,7 @@ export const knowledgeCategories = [
     number: 3,
     title: 'Tập luyện và đi lại',
     articles: [
-      { slug: 'tap-ngay-1-7', title: 'Tập ngày 1–7' },
+      { slug: 'tap-ngay-1-7', title: 'Ngày 1–7 sau ra viện: tập thế nào cho an toàn?', ready: true },
       { slug: '5-bai-tap-co-ban', title: '5 bài tập cơ bản' },
       { slug: 'di-lai-dung-cu-ho-tro', title: 'Đi lại với khung/nạng/gậy' },
       { slug: 'phong-te-nga', title: 'Phòng té ngã' },
