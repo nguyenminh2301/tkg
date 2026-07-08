@@ -195,7 +195,7 @@ function renderExercises() {
       <h3>${ex.title}</h3>
       <p><strong>Mục tiêu:</strong> ${ex.goal}</p>
       <details>
-        <summary>Xem cách tập <svg class="icon icon-sm chevron" aria-hidden="true"><use href="#icon-chevron"/></svg></summary>
+        <summary>Xem cách tập <svg class="icon icon-sm chevron" width="24" height="24" aria-hidden="true"><use href="#icon-chevron"/></svg></summary>
         <div class="details-body">
           <p><strong>Cách tập:</strong></p>
           <ul>${ex.steps.map(s => `<li>${s}</li>`).join('')}</ul>
