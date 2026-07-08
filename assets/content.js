@@ -16,7 +16,7 @@ export const knowledgeCategories = [
     articles: [
       { slug: 'can-biet-gi', title: 'Sau thay khớp gối: tôi cần biết gì?', ready: true },
       { slug: 'truoc-khi-ve-nha', title: 'Trước khi về nhà: 10 điều cần kiểm tra', ready: true },
-      { slug: 'dau-va-sung-sau-mo', title: 'Đau và sưng sau mổ' },
+      { slug: 'dau-va-sung-sau-mo', title: 'Đau và sưng sau mổ: khi nào là bình thường?', ready: true },
     ],
   },
   {
@@ -61,7 +61,7 @@ export const knowledgeCategories = [
       { slug: 'ho-tro-di-lai', title: 'Hỗ trợ đi lại' },
       { slug: 'ho-tro-tap-luyen', title: 'Hỗ trợ tập luyện' },
       { slug: 'theo-doi-dau-hieu-nguy-hiem', title: 'Theo dõi dấu hiệu nguy hiểm' },
-      { slug: 'chuan-bi-tai-kham', title: 'Chuẩn bị tái khám' },
+      { slug: 'chuan-bi-tai-kham', title: 'Tái khám sau thay khớp gối: cần chuẩn bị gì?', ready: true },
     ],
   },
   {
