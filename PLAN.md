@@ -88,7 +88,24 @@ vẫn phải nghiêm túc, dễ đọc cho người lớn tuổi, không "màu m
     trống trải — đã tăng lên 40px.
   - Thêm `print-color-adjust: exact` để màu nền (thẻ cảnh báo, khối "An toàn"
     tối màu...) in ra đúng màu thay vì bị trình duyệt bỏ nền khi in.
-- [ ] **Giai đoạn 6 — Tuỳ chọn nâng cao sau này** (chưa làm, chỉ đề xuất)
+- [x] **Giai đoạn 6 — Cấu trúc mục Kiến thức thành bài viết riêng**
+  - Chuyển "Kiến thức" từ 6 thẻ phẳng sang 6 chủ đề (đúng danh sách người
+    dùng cung cấp), mỗi chủ đề là một nhóm liệt kê các bài viết con — tổng
+    19 bài.
+  - Mỗi bài viết là một đường dẫn riêng `article.html?slug=...` (không tạo
+    19 file HTML riêng — dùng 1 trang mẫu `article.html` +
+    `assets/article.js` đọc `slug` từ URL và tra trong nguồn dữ liệu chung
+    `assets/content.js`). Cách này giúp việc "gửi bài dần dần" chỉ cần sửa
+    một chỗ (`assets/content.js`, thêm khoá `body`) mà không phải tạo file
+    mới hay sửa lại trang chủ.
+  - Bài chưa có `body` tự hiện khối "Bài viết đang được cập nhật" (dùng lại
+    style `.notice.warning` có sẵn).
+  - `article.html` có nút "← Trang chủ" ở header và nút lớn "← Quay lại
+    trang chủ" ở cuối bài, đều trỏ về `index.html#knowledge`.
+  - Đã kiểm thử: trang chủ hiện đúng 6 nhóm/19 link, bấm vào 1 bài chuyển
+    đúng sang `article.html?slug=...`, nút quay lại về đúng
+    `index.html#knowledge`, có xử lý trường hợp slug không tồn tại.
+- [ ] **Giai đoạn 7 — Tuỳ chọn nâng cao sau này** (chưa làm, chỉ đề xuất)
 
 ## 4. Đề xuất tích hợp miễn phí thêm (tuỳ chọn, chưa triển khai)
 
