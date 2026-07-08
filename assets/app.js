@@ -1,3 +1,5 @@
+import { knowledgeCategories } from './content.js';
+
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
 
@@ -252,6 +254,27 @@ function updateProgress() {
   $('#today-progress-bar').style.width = value + '%';
 }
 
+function renderKnowledge() {
+  const root = $('#knowledge-list');
+  if (!root) return;
+  root.innerHTML = knowledgeCategories.map(category => `
+    <article class="knowledge-group">
+      <div class="knowledge-group-head">
+        <span class="num-badge">${category.number}</span>
+        <h3>${category.title}</h3>
+      </div>
+      <ul>
+        ${category.articles.map(article => `
+          <li>
+            <a href="article.html?slug=${encodeURIComponent(article.slug)}">${article.title}</a>
+            ${article.body ? '' : '<span class="status-pill">Đang cập nhật</span>'}
+          </li>
+        `).join('')}
+      </ul>
+    </article>
+  `).join('');
+}
+
 function setupDiary() {
   const form = $('#diary-form');
   form.elements.date.value = todayKey();
@@ -321,6 +344,7 @@ setupPhase();
 setupDailyChecklist();
 setupExercises();
 setupDiary();
+renderKnowledge();
 updateProgress();
 
 const yearEl = document.getElementById('year');
