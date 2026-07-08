@@ -15,7 +15,7 @@ export const knowledgeCategories = [
     title: 'Tôi vừa thay khớp gối',
     articles: [
       { slug: 'can-biet-gi', title: 'Sau thay khớp gối: tôi cần biết gì?', ready: true },
-      { slug: 'truoc-khi-ve-nha', title: 'Trước khi về nhà: 10 điều cần kiểm tra' },
+      { slug: 'truoc-khi-ve-nha', title: 'Trước khi về nhà: 10 điều cần kiểm tra', ready: true },
       { slug: 'dau-va-sung-sau-mo', title: 'Đau và sưng sau mổ' },
     ],
   },
