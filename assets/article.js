@@ -1,4 +1,5 @@
 import { findArticle } from './content.js';
+import { setupFontSize } from './fontsize.js';
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
@@ -90,6 +91,7 @@ function render() {
   renderArticle(root, result.category, result.article);
 }
 
+setupFontSize();
 render();
 
 const yearEl = document.getElementById('year');

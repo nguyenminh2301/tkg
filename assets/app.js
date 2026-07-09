@@ -1,4 +1,5 @@
 import { knowledgeCategories } from './content.js';
+import { setupFontSize } from './fontsize.js';
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
@@ -372,6 +373,7 @@ function escapeHtml(value) {
   return String(value).replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
 }
 
+setupFontSize();
 setupMenu();
 setupScrollProgress();
 setupReveal();

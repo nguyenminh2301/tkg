@@ -142,8 +142,15 @@ vẫn phải nghiêm túc, dễ đọc cho người lớn tuổi, không "màu m
         thêm biến `--accent-darker` (6.59:1) cho trạng thái hover, tương phản
         rõ hơn cả lúc bấm. `--warning-ink`/`--warning-bg` (7.22:1) và chữ trắng
         trên `.emergency` (12.44:1) đo lại đều đã đạt, không cần sửa.
-  - [ ] 8.6 (Tuỳ chọn, ưu tiên thấp) Nút tăng/giảm cỡ chữ cho người lớn tuổi —
-        vẫn 100% tĩnh, không thêm dependency.
+  - [x] 8.6 Nút tăng/giảm cỡ chữ (A−/A+) cho người lớn tuổi, đặt ở header cả
+        `index.html` lẫn `article.html`. 3 mức (thường/lớn/rất lớn) đổi
+        `font-size` gốc `<html>` (112.5% / 125%) qua class `.text-lg`/
+        `.text-xl`, lưu lựa chọn ở `localStorage`. Chuyển toàn bộ `font-size`
+        cố định trong `assets/style.css` từ `px` sang `rem` để nút thực sự có
+        tác dụng (giữ nguyên `px` cho icon/khoảng cách/bo góc — không phải cỡ
+        chữ đọc). Logic dùng chung qua module mới `assets/fontsize.js`, import
+        ở cả `assets/app.js` và `assets/article.js` — vẫn 100% tĩnh, không
+        thêm dependency.
 
 ## 4. Đề xuất tích hợp miễn phí thêm (tuỳ chọn, chưa triển khai)
 
@@ -248,3 +255,4 @@ section, từng gây lỗi ở Giai đoạn 2 và 4.
 | 2026-07-08 | 5 | Sửa icon to bất thường trên Chrome Android thật (thêm `width`/`height` trực tiếp trên mọi `<svg class="icon">`, không chỉ dựa CSS) — phát hiện qua ảnh chụp màn hình thật từ người dùng | `cabb505` (PR #2, merge `2d5c6b1`) |
 | 2026-07-09 | 8 (kế hoạch) | Đối chiếu trang với khung `taste-skill` (Leonxlnx/taste-skill), audit cụ thể và chia nhỏ Giai đoạn 8 thành 8.1–8.6 kèm thứ tự triển khai (mục 5) | — (chỉ cập nhật `PLAN.md`, chưa sửa code) |
 | 2026-07-09 | 8.1–8.5 | Triển khai icon đồng nhất, sửa tương phản nút chính (đo bằng công thức WCAG qua script Python, xác nhận 2.98:1 → 4.63:1), trạng thái rỗng cho nhật ký, phân cấp khối An toàn, giảm eyebrow còn 4/10 section. Kiểm bằng Chromium thật (Playwright): chụp desktop/mobile, xác nhận màu nút đổi đúng `rgb(184,90,46)`, stroke-width icon đồng nhất `1.6`, đếm eyebrow còn 4, trạng thái rỗng nhật ký/tìm bài tập hiển thị đúng, không có lỗi console, điều hướng menu di động tới cả 7 mục vẫn dừng đúng section (test riêng vì bước đầu chờ chưa đủ animation `scroll-behavior: smooth`, không phải lỗi thật) | — |
+| 2026-07-09 | 8.6 | Thêm nút cỡ chữ A−/A+ (`assets/fontsize.js`, dùng chung `index.html`/`article.html`), chuyển font-size sang `rem`. Kiểm bằng Chromium thật: body 16→18→20px theo 2 lần bấm, lưu `localStorage` qua reload, khôi phục về mặc định đúng, hoạt động trên trang bài viết (`.article-body` 17→21.25px), nút disable đúng ở 2 đầu mức. Phát hiện lỗi qua kiểm thử thật: ở cỡ chữ lớn nhất, nhãn menu 2 từ bị ngắt dòng giữa chừng ("Trang" / "chủ") do `.site-nav a` không có `white-space:nowrap` — đã sửa thêm `white-space:nowrap` cho link và `flex-wrap:wrap` cho `.site-nav`/`.header-actions` để cả cụm chữ xuống hàng nguyên vẹn thay vì vỡ giữa từ. Xác nhận lại không còn lỗi console, không hồi quy các mục 8.1–8.5 | — |
