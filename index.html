@@ -35,9 +35,9 @@
 <body>
   <!-- Icon sprite dùng chung, không tải thêm request nào -->
   <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
-    <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
-    <symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></symbol>
-    <symbol id="icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></symbol>
+    <symbol id="icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></symbol>
     <symbol id="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.67 4.67 4 5.5 4H12v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 5.5C20 4.67 19.33 4 18.5 4H12v16h6.5a1.5 1.5 0 0 0 1.5-1.5z"/></symbol>
     <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/></symbol>
     <symbol id="icon-printer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V4h12v5"/><rect x="3.5" y="9" width="17" height="7" rx="1.5"/><path d="M7 14h10v6H7z"/></symbol>
@@ -115,7 +115,6 @@
 
     <section class="section soft-bg reveal">
       <div class="container">
-        <p class="eyebrow">Cấu trúc nội dung</p>
         <h2>Người bệnh cần gì sau khi ra viện?</h2>
         <div class="tree-grid">
           <article class="tree-card">
@@ -196,7 +195,6 @@
     <section id="daily" class="section soft-bg reveal">
       <div class="container two-col">
         <div>
-          <p class="eyebrow">Checklist hằng ngày</p>
           <h2>Checklist hôm nay</h2>
           <p>Đánh dấu sau khi hoàn thành. Dữ liệu chỉ lưu trên thiết bị này.</p>
         </div>
@@ -213,7 +211,6 @@
 
     <section id="exercises" class="section reveal">
       <div class="container">
-        <p class="eyebrow">Thư viện bài tập</p>
         <h2>Chọn bài tập phù hợp</h2>
         <p class="lead-sm">Bấm "Xem cách tập" trên mỗi thẻ để hiện chi tiết — chỉ hiện những gì bạn cần lúc này.</p>
         <div class="tool-row">
@@ -232,7 +229,6 @@
 
     <section id="diary" class="section soft-bg reveal">
       <div class="container">
-        <p class="eyebrow">Nhật ký tập luyện</p>
         <h2>Nhật ký tập luyện</h2>
         <div class="privacy-note">Nhật ký chỉ lưu trên trình duyệt của bạn. Website không gửi dữ liệu lên máy chủ.</div>
         <form id="diary-form" class="diary-form">
@@ -282,7 +278,6 @@
 
     <section id="tools" class="section soft-bg reveal">
       <div class="container narrow">
-        <p class="eyebrow">Công cụ hỗ trợ</p>
         <h2>Tính chỉ số BMI</h2>
         <p class="lead-sm">Cân nặng ảnh hưởng đến tải trọng lên khớp gối khi đi lại. Chỉ số này chỉ mang tính tham khảo, không thay thế đánh giá của bác sĩ hoặc kỹ thuật viên phục hồi chức năng.</p>
         <div class="today-card">
@@ -306,15 +301,16 @@
         <h2>Khi nào cần liên hệ nhân viên y tế?</h2>
         <div class="safety-grid">
           <article class="urgent"><h3>Báo ngay</h3><p>Sốt, khó thở, đau ngực, ngất, đau hoặc sưng bắp chân rõ, vết mổ chảy dịch hoặc mủ, đỏ nóng lan rộng.</p></article>
-          <article><h3>Dừng bài tập và hỏi lại</h3><p>Đau nhói, chóng mặt, hụt chân, gối sưng tăng nhiều sau tập, không chịu lực được như hôm trước.</p></article>
-          <article><h3>Giảm cường độ</h3><p>Nếu đau sau tập tăng và kéo dài sang hôm sau, giảm số lần tập và trao đổi với KTV PHCN.</p></article>
+          <div class="safety-secondary">
+            <article><h3>Dừng bài tập và hỏi lại</h3><p>Đau nhói, chóng mặt, hụt chân, gối sưng tăng nhiều sau tập, không chịu lực được như hôm trước.</p></article>
+            <article><h3>Giảm cường độ</h3><p>Nếu đau sau tập tăng và kéo dài sang hôm sau, giảm số lần tập và trao đổi với KTV PHCN.</p></article>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="faq" class="section reveal">
       <div class="container narrow">
-        <p class="eyebrow">Câu hỏi thường gặp</p>
         <h2>Một số thắc mắc</h2>
         <details open>
           <summary><span>Đau khi tập có bình thường không?</span><svg class="icon icon-sm chevron" width="24" height="24" aria-hidden="true"><use href="#icon-chevron"/></svg></summary>

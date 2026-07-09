@@ -337,7 +337,7 @@ function setupDiary() {
 function renderDiary() {
   const rows = storage.get('diaryRows', []);
   const tbody = $('#diary-table tbody');
-  tbody.innerHTML = rows.map(row => `
+  tbody.innerHTML = rows.length ? rows.map(row => `
     <tr>
       <td>${escapeHtml(row.date || '')}</td>
       <td>${escapeHtml(row.painRest || '')}</td>
@@ -347,7 +347,7 @@ function renderDiary() {
       <td>${escapeHtml(row.exerciseDone || '')}</td>
       <td>${escapeHtml(row.note || '')}</td>
     </tr>
-  `).join('');
+  `).join('') : '<tr><td class="table-empty" colspan="7">Chưa có nhật ký nào được lưu trên thiết bị này.</td></tr>';
 }
 
 function exportCsv() {

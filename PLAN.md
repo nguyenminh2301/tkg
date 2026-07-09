@@ -116,23 +116,32 @@ vẫn phải nghiêm túc, dễ đọc cho người lớn tuổi, không "màu m
     từ màu xanh dương/cam gốc người dùng gửi sang đúng tông thương hiệu
     trang), và dòng miễn trừ trách nhiệm cuối bài `.article-disclaimer`.
   - 18 bài còn lại vẫn ở trạng thái "Đang cập nhật" như thiết kế.
-- [ ] **Giai đoạn 8 — Nâng "chất" giao diện theo khung đánh giá taste-skill** (kế
-      hoạch chi tiết ở mục 5, chưa triển khai code)
-  - [ ] 8.1 Giảm eyebrow (nhãn in hoa nhỏ phía trên tiêu đề) đang lặp lại máy móc
-        ở gần như mọi section xuống còn 2–3 vị trí thật sự cần phân loại nội
-        dung.
-  - [ ] 8.2 Phân cấp lại khối "Báo ngay" trong mục An toàn để nổi bật rõ hơn 2
-        thẻ còn lại — hiện 3 mức độ khẩn cấp khác nhau đang bị trình bày ngang
-        hàng như 3 thẻ đều nhau.
-  - [ ] 8.3 Thêm trạng thái rỗng cho tìm kiếm bài tập ("Không tìm thấy bài tập
-        phù hợp, thử từ khoá khác") và cho bảng nhật ký khi chưa có dữ liệu
-        ("Chưa có nhật ký nào được lưu") — hiện `renderExercises`/`renderDiary`
-        chỉ render mảng rỗng thành bảng/lưới trống, không có thông báo.
-  - [ ] 8.4 Đồng nhất `stroke-width` của bộ icon sprite trong `index.html`
-        (đang lẫn 1.6 / 1.75 / 2 giữa các icon).
-  - [ ] 8.5 Rà lại tương phản màu đạt WCAG AA — đặc biệt `--warning-ink` trên
-        `--warning-bg` và chữ trên nền `.emergency` (`--brand-dark`), vì đối
-        tượng đọc là người lớn tuổi.
+- [x] **Giai đoạn 8 — Nâng "chất" giao diện theo khung đánh giá taste-skill**
+      (kế hoạch chi tiết ở mục 5; mục 8.1–8.5 đã triển khai, 8.6 để sau)
+  - [x] 8.1 Giảm eyebrow (nhãn in hoa nhỏ phía trên tiêu đề) đang lặp lại máy
+        móc ở gần như mọi section — bỏ ở 6 section không thật cần nhãn phân
+        loại ("Người bệnh cần gì", Checklist hằng ngày, Bài tập, Nhật ký, Công
+        cụ, FAQ); giữ lại ở hero, Lộ trình, An toàn, Kiến thức (4/10 section,
+        đúng tinh thần "eyebrow không lặp lại máy móc" thay vì cứng nhắc theo
+        đúng số 2–3 nêu ban đầu).
+  - [x] 8.2 Phân cấp lại khối "Báo ngay" trong mục An toàn: tách khỏi lưới 3
+        cột đều, cho chiếm full-width phía trên, viền dày hơn, tiêu đề lớn hơn
+        màu đỏ cảnh báo; 2 thẻ còn lại xếp thành hàng `.safety-secondary`
+        riêng bên dưới.
+  - [x] 8.3 Thêm trạng thái rỗng cho bảng nhật ký ("Chưa có nhật ký nào được
+        lưu trên thiết bị này.") trong `renderDiary()` — kiểm tra lại thì tìm
+        kiếm bài tập **đã có sẵn** thông báo "Không tìm thấy bài tập phù hợp."
+        từ trước, chỉ ghi nhận nhầm ở bản audit đầu (mục 5.3 phía trên), không
+        cần sửa thêm.
+  - [x] 8.4 Đồng nhất `stroke-width` bộ icon sprite trong `index.html` về 1.6
+        (trước đó lẫn 1.6 / 1.75 / 2).
+  - [x] 8.5 Đo tương phản màu bằng công thức WCAG (script Python, xem nhật ký
+        checkpoint): phát hiện chữ trắng trên `.button.primary` nền `--accent`
+        (`#E07A47`) chỉ đạt **2.98:1** — dưới ngưỡng AA 4.5:1. Đã đổi nền mặc
+        định của `.button.primary` sang `--accent-dark` (4.63:1, đạt AA) và
+        thêm biến `--accent-darker` (6.59:1) cho trạng thái hover, tương phản
+        rõ hơn cả lúc bấm. `--warning-ink`/`--warning-bg` (7.22:1) và chữ trắng
+        trên `.emergency` (12.44:1) đo lại đều đã đạt, không cần sửa.
   - [ ] 8.6 (Tuỳ chọn, ưu tiên thấp) Nút tăng/giảm cỡ chữ cho người lớn tuổi —
         vẫn 100% tĩnh, không thêm dependency.
 
@@ -238,3 +247,4 @@ section, từng gây lỗi ở Giai đoạn 2 và 4.
 | 2026-07-08 | 5 | Kiểm thử trình duyệt thật, gỡ `content-visibility`/lazy-render (phá điều hướng), tăng icon Kiến thức, print-color-adjust | `d5361eb` (PR #1, merge `4832e25`) |
 | 2026-07-08 | 5 | Sửa icon to bất thường trên Chrome Android thật (thêm `width`/`height` trực tiếp trên mọi `<svg class="icon">`, không chỉ dựa CSS) — phát hiện qua ảnh chụp màn hình thật từ người dùng | `cabb505` (PR #2, merge `2d5c6b1`) |
 | 2026-07-09 | 8 (kế hoạch) | Đối chiếu trang với khung `taste-skill` (Leonxlnx/taste-skill), audit cụ thể và chia nhỏ Giai đoạn 8 thành 8.1–8.6 kèm thứ tự triển khai (mục 5) | — (chỉ cập nhật `PLAN.md`, chưa sửa code) |
+| 2026-07-09 | 8.1–8.5 | Triển khai icon đồng nhất, sửa tương phản nút chính (đo bằng công thức WCAG qua script Python, xác nhận 2.98:1 → 4.63:1), trạng thái rỗng cho nhật ký, phân cấp khối An toàn, giảm eyebrow còn 4/10 section. Kiểm bằng Chromium thật (Playwright): chụp desktop/mobile, xác nhận màu nút đổi đúng `rgb(184,90,46)`, stroke-width icon đồng nhất `1.6`, đếm eyebrow còn 4, trạng thái rỗng nhật ký/tìm bài tập hiển thị đúng, không có lỗi console, điều hướng menu di động tới cả 7 mục vẫn dừng đúng section (test riêng vì bước đầu chờ chưa đủ animation `scroll-behavior: smooth`, không phải lỗi thật) | — |
