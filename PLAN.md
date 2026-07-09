@@ -116,7 +116,25 @@ vẫn phải nghiêm túc, dễ đọc cho người lớn tuổi, không "màu m
     từ màu xanh dương/cam gốc người dùng gửi sang đúng tông thương hiệu
     trang), và dòng miễn trừ trách nhiệm cuối bài `.article-disclaimer`.
   - 18 bài còn lại vẫn ở trạng thái "Đang cập nhật" như thiết kế.
-- [ ] **Giai đoạn 8 — Tuỳ chọn nâng cao sau này** (chưa làm, chỉ đề xuất)
+- [ ] **Giai đoạn 8 — Nâng "chất" giao diện theo khung đánh giá taste-skill** (kế
+      hoạch chi tiết ở mục 5, chưa triển khai code)
+  - [ ] 8.1 Giảm eyebrow (nhãn in hoa nhỏ phía trên tiêu đề) đang lặp lại máy móc
+        ở gần như mọi section xuống còn 2–3 vị trí thật sự cần phân loại nội
+        dung.
+  - [ ] 8.2 Phân cấp lại khối "Báo ngay" trong mục An toàn để nổi bật rõ hơn 2
+        thẻ còn lại — hiện 3 mức độ khẩn cấp khác nhau đang bị trình bày ngang
+        hàng như 3 thẻ đều nhau.
+  - [ ] 8.3 Thêm trạng thái rỗng cho tìm kiếm bài tập ("Không tìm thấy bài tập
+        phù hợp, thử từ khoá khác") và cho bảng nhật ký khi chưa có dữ liệu
+        ("Chưa có nhật ký nào được lưu") — hiện `renderExercises`/`renderDiary`
+        chỉ render mảng rỗng thành bảng/lưới trống, không có thông báo.
+  - [ ] 8.4 Đồng nhất `stroke-width` của bộ icon sprite trong `index.html`
+        (đang lẫn 1.6 / 1.75 / 2 giữa các icon).
+  - [ ] 8.5 Rà lại tương phản màu đạt WCAG AA — đặc biệt `--warning-ink` trên
+        `--warning-bg` và chữ trên nền `.emergency` (`--brand-dark`), vì đối
+        tượng đọc là người lớn tuổi.
+  - [ ] 8.6 (Tuỳ chọn, ưu tiên thấp) Nút tăng/giảm cỡ chữ cho người lớn tuổi —
+        vẫn 100% tĩnh, không thêm dependency.
 
 ## 4. Đề xuất tích hợp miễn phí thêm (tuỳ chọn, chưa triển khai)
 
@@ -140,7 +158,76 @@ kết "không thu thập dữ liệu" hiện tại của trang:
 5. **QR code** cho từng trang: dùng thư viện tĩnh nhỏ tự lưu trong repo (không
    gọi API ngoài) nếu cần in tờ rơi tại bệnh viện.
 
-## 5. Nhật ký checkpoint
+## 5. Đối chiếu với khung `taste-skill` (Leonxlnx/taste-skill) cho Giai đoạn 8
+
+### 5.1 taste-skill là gì
+
+[`Leonxlnx/taste-skill`](https://github.com/Leonxlnx/taste-skill) là bộ "Agent
+Skill" (SKILL.md) giúp AI code frontend bớt "slop" — bớt trông rập khuôn kiểu
+AI tự sinh (gradient tím-xanh, hero 3 thẻ đều nhau, glassmorphism sáo mòn...).
+Bộ này gồm 3 "núm chỉnh" `DESIGN_VARIANCE` / `MOTION_INTENSITY` /
+`VISUAL_DENSITY` (thang 1–10), một checklist quy tắc typography/màu/layout/
+motion, và một skill `redesign-skill` riêng cho việc audit + nâng cấp code
+frontend **có sẵn** (quy trình: Scan → Diagnose → Fix, không viết lại từ đầu,
+ưu tiên sửa theo thứ tự: font → màu → trạng thái tương tác → layout/khoảng
+cách → component → trạng thái rỗng/lỗi → hoàn thiện typography).
+
+### 5.2 Phần không áp dụng được — và vì sao
+
+taste-skill mặc định cho stack React/Next.js + Tailwind + thư viện icon npm
+(Phosphor/Radix/Tabler) + font `next/font`. Trang này có **ràng buộc cứng**
+ở mục tiêu 5 (100% tĩnh, không build step, không npm) nên **không** đổi
+sang stack đó — chỉ mượn phần tư duy "gu thẩm mỹ", dịch sang HTML/CSS/JS
+thuần đã có.
+
+Một số quy tắc mặc định của taste-skill cũng **sai ngữ cảnh** cho trang y tế
+cho người lớn tuổi và bị loại có chủ đích:
+
+- Dial mặc định `VARIANCE 8 / MOTION 6` (bất đối xứng mạnh, hiệu ứng
+  scroll-hijack) — **không phù hợp**: người bệnh lớn tuổi cần điều hướng dễ
+  đoán, không hiệu ứng gây rối mắt/chóng mặt. Trang này nên giữ dial thấp:
+  `VARIANCE ~2 / MOTION ~2 / DENSITY ~3–4` (đã gần đúng ở bản hiện tại: fade
+  nhẹ khi cuộn, không hiệu ứng cuộn phức tạp).
+- Cấm dùng serif mặc định — trang này **cố tình** dùng `ui-serif` cho tiêu đề
+  để tạo cảm giác biên tập/uy tín y khoa (mục 2 ở trên); bản thân taste-skill
+  cũng có ngoại lệ "trừ khi bối cảnh thực sự editorial/uy tín", nên giữ
+  nguyên, không đổi.
+- Bắt buộc icon từ thư viện npm (Phosphor/Radix...) — trang này dùng sprite
+  SVG tự vẽ để **không tốn thêm request mạng**, đúng mục tiêu 4/5. Giữ
+  nguyên cách làm, chỉ cần đồng nhất chi tiết vẽ (xem 5.3).
+- Yêu cầu ảnh thật/font ngoài qua `next/font` — không áp dụng, trang chưa có
+  ảnh thật (xem mục 4.1) và cố tình dùng font hệ thống để tải tức thì.
+
+### 5.3 Phần áp dụng được — audit cụ thể vào code hiện tại
+
+| Vấn đề (theo checklist taste-skill) | Vị trí trong code | Đề xuất |
+|---|---|---|
+| Eyebrow lặp lại cơ học (`taste-skill` giới hạn ~1 eyebrow / 3 section) | `<p class="eyebrow">` xuất hiện ở gần như mọi section trong `index.html` (hero, cấu trúc nội dung, lộ trình, checklist, bài tập, nhật ký, công cụ, an toàn, FAQ, kiến thức — 10 lần) | Chỉ giữ eyebrow ở hero + 2 section thực sự cần nhãn phân loại (Lộ trình, Kiến thức); các section còn lại để `h2` đứng một mình |
+| 3 mức khẩn cấp bị trình bày ngang hàng như 3 thẻ đều nhau | `.safety-grid` 3 cột đều (`assets/style.css` dòng 166–168), "Báo ngay" chỉ khác màu nền, không khác kích thước/độ nổi | Cho thẻ "Báo ngay" chiếm rộng hơn (vd. full-width phía trên, 2 thẻ còn lại xếp dưới) để đúng mức độ khẩn cấp thật |
+| Thiếu trạng thái rỗng/không kết quả | `renderExercises()` và `renderDiary()` trong `assets/app.js` — mảng rỗng chỉ render thành lưới/bảng trống, không có thông báo | Thêm dòng thông báo khi `filtered.length === 0` / `rows.length === 0` |
+| Stroke-width icon không đồng nhất | Sprite trong `index.html` dòng 38–44: lẫn `stroke-width` 1.6, 1.75, 2 | Chọn 1 giá trị chung (đề xuất 1.6) cho toàn bộ icon |
+| Tương phản màu cần kiểm lại cho người lớn tuổi | `--warning-ink` (`#6d4711`) trên `--warning-bg` (`#fcefd9`); chữ trên `.emergency` nền `--brand-dark` | Đo bằng công cụ contrast checker, đảm bảo ≥ 4.5:1 cho chữ thường |
+| Một accent màu / trang | Đã đúng: `--brand` #146356 + `--accent` #E07A47 dùng nhất quán | Không cần sửa |
+| Không hiệu ứng `scroll` thủ công, không scroll-hijack | `.reveal` dùng `IntersectionObserver` (không thấy `addEventListener('scroll')` trong `app.js`) | Không cần sửa |
+| Fake nội dung / lorem ipsum | Không có — toàn bộ nội dung là hướng dẫn y khoa thật | Không cần sửa |
+
+### 5.4 Thứ tự triển khai khi vào code (theo đúng "Fix Priority" của redesign-skill)
+
+1. Đồng nhất icon (nhanh, rủi ro thấp) — mục 8.4.
+2. Kiểm & sửa tương phản màu — mục 8.5 (ảnh hưởng a11y, ưu tiên cao vì đối
+   tượng người lớn tuổi).
+3. Trạng thái rỗng cho tìm kiếm/nhật ký — mục 8.3 (trạng thái tương tác còn
+   thiếu).
+4. Phân cấp lại khối An toàn — mục 8.2 (layout).
+5. Giảm eyebrow dư thừa — mục 8.1 (polish cuối, đụng nhiều section nên làm
+   sau khi các phần trên ổn định để tránh review đi review lại toàn trang).
+6. Nút cỡ chữ (tuỳ chọn) — mục 8.6, chỉ làm nếu còn dư địa, không bắt buộc.
+
+Mỗi mục sửa xong nên kiểm bằng trình duyệt thật (theo đúng cách Giai đoạn 5 đã
+làm) trước khi tick — đặc biệt bước 4 và 5 vì có thể ảnh hưởng vị trí cuộn tới
+section, từng gây lỗi ở Giai đoạn 2 và 4.
+
+## 6. Nhật ký checkpoint
 
 | Ngày | Giai đoạn | Việc đã làm | Commit |
 |---|---|---|---|
@@ -150,3 +237,4 @@ kết "không thu thập dữ liệu" hiện tại của trang:
 | 2026-07-08 | 4 | Scroll progress, reveal-on-scroll, disclosure `<details>` cho bài tập | `ba6669b` |
 | 2026-07-08 | 5 | Kiểm thử trình duyệt thật, gỡ `content-visibility`/lazy-render (phá điều hướng), tăng icon Kiến thức, print-color-adjust | `d5361eb` (PR #1, merge `4832e25`) |
 | 2026-07-08 | 5 | Sửa icon to bất thường trên Chrome Android thật (thêm `width`/`height` trực tiếp trên mọi `<svg class="icon">`, không chỉ dựa CSS) — phát hiện qua ảnh chụp màn hình thật từ người dùng | `cabb505` (PR #2, merge `2d5c6b1`) |
+| 2026-07-09 | 8 (kế hoạch) | Đối chiếu trang với khung `taste-skill` (Leonxlnx/taste-skill), audit cụ thể và chia nhỏ Giai đoạn 8 thành 8.1–8.6 kèm thứ tự triển khai (mục 5) | — (chỉ cập nhật `PLAN.md`, chưa sửa code) |
