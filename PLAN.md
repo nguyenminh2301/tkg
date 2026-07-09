@@ -97,10 +97,11 @@ vẫn phải nghiêm túc, dễ đọc cho người lớn tuổi, không "màu m
     `assets/article.js` đọc `slug` từ URL, tra tiêu đề/chủ đề trong
     `assets/content.js`, rồi tải nội dung từ file HTML riêng của bài đó).
   - `article.html` có nút "← Trang chủ" ở header và nút lớn "← Quay lại
-    trang chủ" ở cuối bài, đều trỏ về `index.html#knowledge`.
+    trang chủ" ở cuối bài. (Từ Giai đoạn 9, mục Kiến thức có trang riêng
+    `kien-thuc.html` nên các nút này trỏ về đó thay vì `index.html#knowledge`.)
   - Đã kiểm thử: trang chủ hiện đúng 6 nhóm/19 link, bấm vào 1 bài chuyển
-    đúng sang `article.html?slug=...`, nút quay lại về đúng
-    `index.html#knowledge`, có xử lý trường hợp slug không tồn tại.
+    đúng sang `article.html?slug=...`, nút quay lại về đúng trang danh sách,
+    có xử lý trường hợp slug không tồn tại.
 - [x] **Giai đoạn 7 — File nội dung sẵn sàng cho từng bài, nhận bài đầu tiên**
   - Tạo sẵn `content/articles/<slug>.html` cho toàn bộ 19 bài (rỗng, chỉ có
     ghi chú "sẽ cập nhật tại đây") để mỗi khi có bài mới chỉ cần thay đúng
@@ -116,7 +117,39 @@ vẫn phải nghiêm túc, dễ đọc cho người lớn tuổi, không "màu m
     từ màu xanh dương/cam gốc người dùng gửi sang đúng tông thương hiệu
     trang), và dòng miễn trừ trách nhiệm cuối bài `.article-disclaimer`.
   - 18 bài còn lại vẫn ở trạng thái "Đang cập nhật" như thiết kế.
-- [ ] **Giai đoạn 8 — Tuỳ chọn nâng cao sau này** (chưa làm, chỉ đề xuất)
+- [x] **Giai đoạn 9 — Nâng cấp chuyên nghiệp (tinh thần taste-skill) + tách trang**
+  - **Phông thương hiệu tự host**: Fraunces 600 (2 file woff2 latin + tiếng
+    Việt, ~46KB, `assets/fonts/`), `font-display: swap`, preload trong
+    `<head>`. Đã xác nhận dấu tiếng Việt render đúng trên tiêu đề.
+  - **Typography**: `text-wrap: balance/pretty`, `tabular-nums` cho số liệu
+    (nhật ký, BMI, tiến độ), thang chữ đậm gọn 600/700/800.
+  - **Thị giác**: nền hero có gradient môi trường nhẹ; thẻ (`.tree-card`,
+    `.exercise-card`, `.knowledge-group`, `.nav-card`) có hover nâng nhẹ;
+    trạng thái nhấn `:active` cho nút/tab.
+  - **Menu sáng theo vị trí cuộn**: `setupScrollSpy()` trong `assets/app.js`
+    (IntersectionObserver, band neo phía trên viewport) — tự động khớp mọi
+    trang vì chỉ quan sát các mục nav có id tồn tại trên trang hiện tại.
+  - **Trạng thái rỗng/tải**: "Không tìm thấy bài tập phù hợp" và "Chưa có
+    nhật ký nào" thay cho khoảng trắng; skeleton nhấp nháy khi tải nội dung
+    bài viết (`assets/article.js`).
+  - **Trang 404 thương hiệu** (`404.html`), thang `z-index` dùng token
+    (`--z-header/--z-progress/--z-skip`).
+  - **Tách trang cho gọn** (yêu cầu người dùng: trang chủ dài dòng, nút bấm
+    nên dẫn sang trang tiếp theo): trang chủ giờ chỉ còn hero + "Hôm nay tập
+    gì" + tổng quan 4 bước + 4 thẻ điều hướng + An toàn + Hỏi đáp. Lộ trình,
+    Bài tập, Nhật ký/Checklist/BMI, Kiến thức chuyển sang trang riêng
+    (`lo-trinh.html`, `bai-tap.html`, `nhat-ky.html`, `kien-thuc.html`), mỗi
+    trang có nút "← Trang trước" / "Tiếp theo: ... →" ở cuối. Đã thêm guard
+    (`if (!el) return`) cho mọi hàm trong `assets/app.js` để chạy an toàn
+    trên trang thiếu phần tử tương ứng (bug thật phát hiện khi test: gọi
+    `updateProgress()` trên trang không có thanh tiến độ từng làm vỡ trang).
+  - **Rà soát văn bản**: câu chữ UI toàn site viết lại ngắn gọn, trực tiếp
+    hơn (hero, FAQ, nhãn nút, thông báo BMI/nhật ký...). Dòng miễn trừ trách
+    nhiệm cuối bài viết (lặp y hệt ở cả 7 bài) chuyển thành 1 dòng dùng
+    chung, render bởi `assets/article.js` thay vì chép tay trong từng file —
+    tránh lặp nội dung kiểu dán khuôn. **Không chỉnh sửa nội dung y khoa**
+    (đoạn văn chuyên môn trong bài viết) — chỉ gọn phần khung/nhãn giao diện.
+- [ ] **Giai đoạn 10 — Tuỳ chọn nâng cao sau này** (chưa làm, chỉ đề xuất)
 
 ## 4. Đề xuất tích hợp miễn phí thêm (tuỳ chọn, chưa triển khai)
 

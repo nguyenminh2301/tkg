@@ -140,6 +140,25 @@ function setupReveal() {
   items.forEach(el => observer.observe(el));
 }
 
+function setupScrollSpy() {
+  if (!('IntersectionObserver' in window)) return;
+  const targets = new Map();
+  $$('.site-nav a').forEach(a => {
+    const hash = a.getAttribute('href').split('#')[1];
+    const el = hash && document.getElementById(hash);
+    if (el) targets.set(el, a);
+  });
+  if (!targets.size) return;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      $$('.site-nav a.active').forEach(a => a.classList.remove('active'));
+      targets.get(entry.target)?.classList.add('active');
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+  targets.forEach((a, el) => observer.observe(el));
+}
+
 function setupTabs() {
   $$('.tab').forEach(button => {
     button.addEventListener('click', () => {
@@ -167,11 +186,12 @@ function computePhase(dateString) {
 
 function setupPhase() {
   const input = $('#surgery-date');
+  if (!input) return;
   const saved = storage.get('surgeryDate', '');
   if (saved) input.value = saved;
   function render() {
     const result = computePhase(input.value);
-    $('#phase-output').textContent = result ? result.text : 'Chưa có ngày phẫu thuật. Hãy nhập ngày để website gợi ý giai đoạn tập.';
+    $('#phase-output').textContent = result ? result.text : 'Nhập ngày phẫu thuật để xem giai đoạn tập phù hợp.';
   }
   $('#save-date')?.addEventListener('click', () => {
     storage.set('surgeryDate', input.value);
@@ -208,7 +228,7 @@ function setupBmi() {
     }
     const heightM = heightCm / 100;
     const bmi = weightKg / (heightM * heightM);
-    output.textContent = `BMI của bạn là ${bmi.toFixed(1)} — ${classifyBmi(bmi)}. Chỉ số này chỉ mang tính tham khảo, hãy trao đổi thêm với bác sĩ hoặc kỹ thuật viên phục hồi chức năng.`;
+    output.textContent = `BMI: ${bmi.toFixed(1)} — ${classifyBmi(bmi)}. Chỉ số tham khảo, không thay thế đánh giá chuyên môn.`;
     storage.set('bmiHeight', heightCm);
     storage.set('bmiWeight', weightKg);
   }
@@ -217,10 +237,11 @@ function setupBmi() {
 }
 
 function renderExercises() {
+  const list = $('#exercise-list');
+  if (!list) return;
   const search = ($('#exercise-search')?.value || '').toLowerCase().trim();
   const phase = $('#phase-filter')?.value || 'all';
   const done = storage.get('exerciseDone:' + todayKey(), []);
-  const list = $('#exercise-list');
   const filtered = exercises.filter(ex => {
     const text = [ex.title, ex.goal, ex.tags.join(' ')].join(' ').toLowerCase();
     const phaseOk = phase === 'all' || ex.phase.includes(phase);
@@ -243,7 +264,12 @@ function renderExercises() {
       </details>
       <label class="done-row"><input type="checkbox" data-exdone="${ex.id}" ${done.includes(ex.id) ? 'checked' : ''}> Tôi đã tập bài này hôm nay</label>
     </article>
-  `).join('') || '<p>Không tìm thấy bài tập phù hợp.</p>';
+  `).join('') || `
+    <div class="empty-state">
+      <strong>Không tìm thấy bài tập phù hợp.</strong>
+      <p>Thử xoá từ khoá hoặc chọn "Tất cả giai đoạn".</p>
+    </div>
+  `;
 
   $$('[data-exdone]').forEach(box => {
     box.addEventListener('change', () => {
@@ -281,13 +307,16 @@ function setupDailyChecklist() {
 }
 
 function updateProgress() {
+  const text = $('#today-progress-text');
+  const bar = $('#today-progress-bar');
+  if (!text || !bar) return;
   const dailyTotal = $$('[data-daily]').length;
   const dailyDone = $$('[data-daily]').filter(b => b.checked).length;
   const exDone = storage.get('exerciseDone:' + todayKey(), []).length > 0 ? 1 : 0;
   const total = dailyTotal + 1;
   const value = Math.round(((dailyDone + exDone) / total) * 100);
-  $('#today-progress-text').textContent = value + '%';
-  $('#today-progress-bar').style.width = value + '%';
+  text.textContent = value + '%';
+  bar.style.width = value + '%';
 }
 
 function renderKnowledge() {
@@ -313,6 +342,7 @@ function renderKnowledge() {
 
 function setupDiary() {
   const form = $('#diary-form');
+  if (!form) return;
   form.elements.date.value = todayKey();
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -335,8 +365,9 @@ function setupDiary() {
 }
 
 function renderDiary() {
-  const rows = storage.get('diaryRows', []);
   const tbody = $('#diary-table tbody');
+  if (!tbody) return;
+  const rows = storage.get('diaryRows', []);
   tbody.innerHTML = rows.map(row => `
     <tr>
       <td>${escapeHtml(row.date || '')}</td>
@@ -347,7 +378,7 @@ function renderDiary() {
       <td>${escapeHtml(row.exerciseDone || '')}</td>
       <td>${escapeHtml(row.note || '')}</td>
     </tr>
-  `).join('');
+  `).join('') || '<tr class="empty-row"><td colspan="7">Chưa có nhật ký nào. Điền form phía trên để bắt đầu.</td></tr>';
 }
 
 function exportCsv() {
@@ -375,6 +406,7 @@ function escapeHtml(value) {
 setupMenu();
 setupScrollProgress();
 setupReveal();
+setupScrollSpy();
 setupTabs();
 setupPhase();
 setupBmi();
